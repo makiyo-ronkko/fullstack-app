@@ -24,5 +24,5 @@ const AppUserSchema = new mongoose.Schema({
   },
 });
 
-module.exports = AppUser = mongoose.model('appuser', AppUserSchema);
+module.exports = mongoose.model('appuser', AppUserSchema);
 // export variable AppUser, model name = 'appuser', Schema is 'AppUserSchema'
