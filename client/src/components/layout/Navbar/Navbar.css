@@ -11,14 +11,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--primary-color);
+  background: var(--light-color);
   padding: 0.7rem 2rem;
   position: fixed;
   z-index: 9999;
   width: 100%;
   height: 10%;
   top: 0;
-  border-bottom: solid 1px var(--primary-color);
+  border-bottom: solid 1px var(--light-color);
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
@@ -31,7 +31,7 @@
 }
 
 .Navbar a {
-  color: var(--support-color);
+  color: var(--primary-color);
   text-decoration: none;
   text-transform: uppercase;
   font-size: 1.2rem;
@@ -41,5 +41,5 @@
 }
 
 .Navbar a:hover {
-  color: var(--light-color);
+  color: var(--gray-color);
 }
