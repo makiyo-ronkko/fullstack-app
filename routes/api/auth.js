@@ -7,11 +7,12 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
 
-// GET api/auth: Get auth user with a token
+// GET auth: Get auth user with a token
 router.get('/', auth, async (req, res) => {
   try {
     const user = await AppUser.findById(req.user.id).select('-password');
     // req.user = decoded.user; req.user.id from token
+    console.log(req.user.id);
     res.json(user);
   } catch (err) {
     console.log(err.message);
@@ -19,7 +20,7 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-// POST api/auth: Login user with authentication with a token
+// POST auth: Login user with authentication with a token
 router.post(
   '/',
   [
