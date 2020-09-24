@@ -29,47 +29,49 @@ const Signup = (props) => {
 
   return (
     <Fragment>
-      <div className='container'>
-        <form className='Form' onSubmit={(e) => submit(e)}>
-          <div className='Form-row'>
-            <h1>Registration</h1>
-          </div>
-          <div className='Form-row'>
-            <input
-              type='text'
-              placeholder='name'
-              name='name'
-              onChange={(e) => input(e)}
-            />
-          </div>
-          <div className='Form-row'>
-            <input
-              type='email'
-              placeholder='email'
-              name='email'
-              onChange={(e) => input(e)}
-            />
-          </div>
-          <div className='Form-row'>
-            <input
-              type='password'
-              placeholder='password'
-              name='password'
-              onChange={(e) => input(e)}
-            />
-          </div>
-          <div className='Form-row'>
-            <input
-              type='password'
-              placeholder='confirm password'
-              name='password2'
-              onChange={(e) => input(e)}
-            />
-          </div>
-          <div className='Form-row'>
-            <button type='submit'>Register</button>
-          </div>
-        </form>
+      <div className='Signup-background'>
+        <div className='container light-overlay'>
+          <form className='Form' onSubmit={(e) => submit(e)}>
+            <div className='Form-row'>
+              <h1>Registration</h1>
+            </div>
+            <div className='Form-row'>
+              <input
+                type='text'
+                placeholder='name'
+                name='name'
+                onChange={(e) => input(e)}
+              />
+            </div>
+            <div className='Form-row'>
+              <input
+                type='email'
+                placeholder='email'
+                name='email'
+                onChange={(e) => input(e)}
+              />
+            </div>
+            <div className='Form-row'>
+              <input
+                type='password'
+                placeholder='password'
+                name='password'
+                onChange={(e) => input(e)}
+              />
+            </div>
+            <div className='Form-row'>
+              <input
+                type='password'
+                placeholder='confirm password'
+                name='password2'
+                onChange={(e) => input(e)}
+              />
+            </div>
+            <div className='Form-row'>
+              <button type='submit'>Register</button>
+            </div>
+          </form>
+        </div>
       </div>
     </Fragment>
   );

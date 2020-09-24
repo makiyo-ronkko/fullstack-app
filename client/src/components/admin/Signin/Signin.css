@@ -7,9 +7,19 @@
   --light-color: #fffefd;
 }
 
+.Signin-background {
+  position: relative;
+  background: url('../../../img/background2.png') no-repeat center center/cover;
+  height: 100vh;
+}
+
 .Form {
   display: flex;
   flex-direction: column;
+  background: rgb(240, 237, 237, 0.8);
+  width: 20rem;
+  margin: 2rem 0;
+  border-radius: 0.3rem;
 }
 
 .Form-row {
@@ -25,7 +35,6 @@
 }
 
 .Form h1 {
-  text-transform: uppercase;
   margin-top: 0.6rem;
 }
 
