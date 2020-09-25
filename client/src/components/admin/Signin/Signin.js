@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signin } from '../../../actions/index';
 import PropTypes from 'prop-types';
@@ -6,6 +7,8 @@ import PropTypes from 'prop-types';
 import './Signin.css';
 
 const Signin = (props) => {
+  // passing props signin, authenticated
+
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -24,6 +27,10 @@ const Signin = (props) => {
     props.signin(data.email, data.password);
     setSubmitted(true);
   };
+
+  if (props.authenticated) {
+    return <Redirect to='/gallery' />;
+  }
 
   return (
     <Fragment>
@@ -59,6 +66,12 @@ const Signin = (props) => {
               <div className='Form-row'>
                 <button type='submit'>Login</button>
               </div>
+              <div className='Form-row'>
+                You don't have an account?
+                <Link to='register' className='Form-redirect'>
+                  Register
+                </Link>
+              </div>
             </form>
           </div>
         </div>
@@ -69,6 +82,11 @@ const Signin = (props) => {
 
 Signin.propTypes = {
   signin: PropTypes.func.isRequired,
+  authenticated: PropTypes.bool,
 };
 
-export default connect(null, { signin })(Signin);
+const mapStateToProps = (state) => ({
+  authenticated: state.auth.authenticated,
+});
+
+export default connect(mapStateToProps, { signin })(Signin);

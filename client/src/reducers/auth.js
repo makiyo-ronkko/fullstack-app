@@ -3,6 +3,8 @@ import {
   SIGNUP_FAIL,
   SIGNIN_SUCCESS,
   SIGNIN_FAIL,
+  AUTH_USER,
+  AUTH_FAIL,
 } from '../actions/types';
 
 const initialState = {
@@ -23,8 +25,19 @@ export default function (state = initialState, action) {
         authenticated: true,
         loading: false,
       };
+
+    case AUTH_USER:
+      return {
+        ...state,
+        authenticated: true, // there is token
+        loading: false,
+        user: action.payload,
+        // user incuded in payload (res.data)..name, email, avatar etc. except password // backend .select('-password')
+      };
+
     case SIGNUP_FAIL:
     case SIGNIN_FAIL:
+    case AUTH_FAIL:
       localStorage.removeItem('token'); // remove token completely from localStorage
       return {
         ...state,
@@ -32,6 +45,7 @@ export default function (state = initialState, action) {
         authenticated: false,
         loading: false,
       };
+
     default:
       return state;
   }
