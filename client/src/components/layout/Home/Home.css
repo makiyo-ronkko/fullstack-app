@@ -20,6 +20,8 @@
 
 .Home p {
   font-size: 1.5rem;
+  margin: 1rem;
+  font-weight: bolder;
 }
 
 .Home-container {
