@@ -6,3 +6,6 @@ export const SIGNIN_FAIL = 'SIGNIN_FAIL';
 
 export const ALERT_FAIL = 'ALERT_FAIL';
 export const ALERT_CLEAR = 'ALERT_CLEAR';
+
+export const AUTH_USER = 'AUTH_USER';
+export const AUTH_FAIL = 'AUTH_FAIL';
