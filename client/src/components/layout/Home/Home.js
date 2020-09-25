@@ -10,7 +10,7 @@ const Home = () => {
           <h1>Daily Art Sharing</h1>
           <p>
             Share your arts and pictures daily and get ideas and inspiration
-            from peer artist.
+            from peer artists.
           </p>
           <button>
             <Link className='Home-button' to='/register'>
