@@ -9,3 +9,5 @@ export const ALERT_CLEAR = 'ALERT_CLEAR';
 
 export const AUTH_USER = 'AUTH_USER';
 export const AUTH_FAIL = 'AUTH_FAIL';
+
+export const LOGOUT = 'LOGOUT';
