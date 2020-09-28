@@ -5,7 +5,6 @@ import Navbar from './components/layout/Navbar/Navbar';
 import Signup from './components/admin/Signup/Signup';
 import Signin from './components/admin/Signin/Signin';
 import Gallery from './components/gallery/Gallery';
-import Alert from './components/layout/Alert/Alert';
 
 import { Provider } from 'react-redux';
 import tokenAuth from './utils/tokenAuth';
@@ -34,7 +33,6 @@ function App() {
         <Navbar />
         <Route exact path='/' component={Home} />
         <section className='App-container'>
-          <Alert />
           <Switch>
             <Route exact path='/gallery' component={Gallery} />
             <Route exact path='/register' component={Signup} />
