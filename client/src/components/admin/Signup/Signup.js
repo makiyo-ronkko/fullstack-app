@@ -4,6 +4,7 @@ import './Signup.css';
 import { connect } from 'react-redux';
 import { register } from '../../../actions';
 import { alert } from '../../../actions/alert';
+import Alert from '../../layout/Alert/Alert';
 import PropTypes from 'prop-types';
 
 const Signup = (props) => {
@@ -42,7 +43,7 @@ const Signup = (props) => {
   return (
     <Fragment>
       <div className='Signup-background'>
-        <div className='container light-overlay'>
+        <div className='light-overlay'>
           <div className='container'>
             <form className='Form' onSubmit={(e) => submit(e)}>
               <div className='Form-row'>
@@ -101,6 +102,9 @@ const Signup = (props) => {
                 <Link to='login' className='Form-redirect'>
                   Login
                 </Link>
+              </div>
+              <div className='Form-row'>
+                <Alert />
               </div>
             </form>
           </div>
