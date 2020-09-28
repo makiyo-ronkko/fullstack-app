@@ -1,10 +1,6 @@
-.Alert {
-  display: block;
+.Alert p {
+  color: red;
   padding: 0.8rem;
   margin: 1rem 0;
-  opacity: 0.9;
-  background: var(--light-color);
-  color: #333;
-  background: red;
-  z-index: 9999;
+  z-index: 999;
 }
