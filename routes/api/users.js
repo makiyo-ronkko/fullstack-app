@@ -47,7 +47,7 @@ router.post(
       });
 
       // create a new AppUser
-      appuser = new AppUser({
+      user = new AppUser({
         name,
         email,
         avatar,
@@ -56,17 +56,17 @@ router.post(
       // Salt is random data that is used as an additional input to a one-way function that hashes data
       const salt = await bcrypt.genSalt(10);
       // Encrypt password
-      appuser.password = await bcrypt.hash(password, salt);
+      user.password = await bcrypt.hash(password, salt);
       // Save bcrypted password
-      await appuser.save();
+      await user.save();
 
       // Return jsonwebtoken
       //res.send('User registered');
 
       // get payload which includes user id
       const payload = {
-        appuser: {
-          id: appuser.id, // from mongoose
+        user: {
+          id: user.id, // from mongoose
         },
       };
 
