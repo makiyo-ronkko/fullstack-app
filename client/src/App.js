@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar/Navbar';
 import Signup from './components/admin/Signup/Signup';
 import Signin from './components/admin/Signin/Signin';
 import Gallery from './components/gallery/Gallery';
+import AccountForm from './components/accountForm/AccountForm';
 
 import { Provider } from 'react-redux';
 import tokenAuth from './utils/tokenAuth';
@@ -35,6 +36,7 @@ function App() {
         <section className='App-container'>
           <Switch>
             <Route exact path='/gallery' component={Gallery} />
+            <Route exact path='/create-account' component={AccountForm} />
             <Route exact path='/register' component={Signup} />
             <Route exact path='/login' component={Signin} />
           </Switch>
