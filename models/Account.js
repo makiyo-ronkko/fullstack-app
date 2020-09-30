@@ -11,7 +11,7 @@ const AccountSchema = new mongoose.Schema({
   website: {
     type: String,
   },
-  loaction: {
+  location: {
     type: String,
   },
   date: {
