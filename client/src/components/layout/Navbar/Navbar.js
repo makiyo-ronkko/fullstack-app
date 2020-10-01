@@ -11,7 +11,12 @@ const Navbar = (props) => {
   const isAuthenticated = (
     <ul>
       <li>
-        <Link to='/login'>Login</Link>
+        <Link to='/gallery'>Gallery</Link>
+      </li>
+      <li>
+        <Link to='/profile'>
+          <span>Profile</span>
+        </Link>
       </li>
       <li>
         <a onClick={props.logout} href='#!'>
