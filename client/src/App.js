@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Alert from './components/layout/Alert/Alert';
 import Home from './components/layout/Home/Home';
 import Navbar from './components/layout/Navbar/Navbar';
 import Signup from './components/admin/Signup/Signup';
 import Signin from './components/admin/Signin/Signin';
 import Gallery from './components/gallery/Gallery';
 import AccountForm from './components/accountForm/AccountForm';
+import PrivateRoute from './components/routes/PrivateRoute';
 
 import { Provider } from 'react-redux';
 import tokenAuth from './utils/tokenAuth';
@@ -34,9 +36,10 @@ function App() {
         <Navbar />
         <Route exact path='/' component={Home} />
         <section className='App-container'>
+          <Alert />
           <Switch>
-            <Route exact path='/gallery' component={Gallery} />
-            <Route exact path='/create-account' component={AccountForm} />
+            <PrivateRoute exact path='/gallery' component={Gallery} />
+            <Route exact path='/create-profile' component={AccountForm} />
             <Route exact path='/register' component={Signup} />
             <Route exact path='/login' component={Signin} />
           </Switch>
