@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const AccountSchema = new mongoose.Schema({
+const ProfileSchema = new mongoose.Schema({
   appuser: {
     type: mongoose.Schema.Types.ObjectId, // to connect to registered Appuser
     ref: 'appuser', // reference to appuser model
@@ -20,4 +20,4 @@ const AccountSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('account', AccountSchema);
+module.exports = mongoose.model('appprofile', ProfileSchema);
