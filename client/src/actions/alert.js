@@ -1,12 +1,12 @@
-import { ALERT_FAIL, ALERT_CLEAR } from './types';
+import { CALL_ALERT, ALERT_CLEAR } from './types';
 import { v4 as uuidv4 } from 'uuid';
 
 // Dispatch alert message and type
 export const alert = (message, timeout = 3000) => (dispatch) => {
   const id = uuidv4();
-  // call ALERT_FAIL reducer
+  // call CALL_ALERT reducer
   dispatch({
-    type: ALERT_FAIL,
+    type: CALL_ALERT,
     payload: { message, id },
   });
 
