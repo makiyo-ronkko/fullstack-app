@@ -1,0 +1,49 @@
+:root {
+  --primary-color: #1c47a2;
+  --secondary-color: #a21c8a;
+  --support-color: #f1e6ab;
+  --gray-color: #bfc0c1;
+  --dark-color: #050505;
+  --light-color: #fffefd;
+}
+
+.Profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 40rem;
+  min-height: 60rem;
+  margin: auto;
+  padding-top: 2rem;
+  border-radius: 0.2rem;
+  background: var(--light-color);
+  color: var(--dark-color);
+  border: 1px solid black;
+}
+
+.Profile h1 {
+  margin: 0.4rem;
+  text-transform: uppercase;
+}
+
+.Profile img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.Profile p {
+  margin: 0.2rem;
+  padding-top: 0.8rem;
+}
+
+.Profile hr {
+  display: block;
+  width: 18rem;
+  height: 1px;
+  border: 0;
+  border-top: 2px dotted var(--dark-color);
+  margin: 1rem 0;
+  padding: 0;
+}
