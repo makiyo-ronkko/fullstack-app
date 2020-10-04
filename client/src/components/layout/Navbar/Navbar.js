@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../../actions/index';
 import PropTypes from 'prop-types';
@@ -11,12 +11,14 @@ const Navbar = (props) => {
   const isAuthenticated = (
     <ul>
       <li>
-        <Link to='/gallery'>Gallery</Link>
+        <NavLink exact to='/gallery'>
+          Gallery
+        </NavLink>
       </li>
       <li>
-        <Link to='/profile'>
+        <NavLink exact to='/profile'>
           <span>Profile</span>
-        </Link>
+        </NavLink>
       </li>
       <li>
         <a onClick={props.logout} href='#!'>
@@ -29,10 +31,14 @@ const Navbar = (props) => {
   const notAuthenticated = (
     <ul>
       <li>
-        <Link to='/register'>Register</Link>
+        <NavLink exact to='/register'>
+          Register
+        </NavLink>
       </li>
       <li>
-        <Link to='/login'>Login</Link>
+        <NavLink exact to='/login'>
+          Login
+        </NavLink>
       </li>
     </ul>
   );
@@ -40,7 +46,15 @@ const Navbar = (props) => {
   return (
     <nav className='Navbar'>
       <h1>
-        <Link to='/'>Main page</Link>
+        <NavLink
+          exact
+          to='/'
+          activeStyle={{
+            fontWeight: 'bolder',
+          }}
+        >
+          Main page
+        </NavLink>
       </h1>
       {!props.loading && (
         <Fragment>
