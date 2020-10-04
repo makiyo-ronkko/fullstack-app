@@ -1,8 +1,8 @@
 import {
   SIGNUP_SUCCESS,
-  SIGNUP_FAIL,
+  // SIGNUP_FAIL,
   SIGNIN_SUCCESS,
-  SIGNIN_FAIL,
+  // SIGNIN_FAIL,
   AUTH_USER,
   AUTH_FAIL,
   LOGOUT,
@@ -17,16 +17,6 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case SIGNUP_SUCCESS:
-    case SIGNIN_SUCCESS:
-      localStorage.setItem('token', action.payload.token); // save token came from backend to localStorage
-      return {
-        ...state,
-        ...action.payload, // payload is token
-        authenticated: true,
-        loading: false,
-      };
-
     case AUTH_USER:
       return {
         ...state,
@@ -35,12 +25,28 @@ export default function (state = initialState, action) {
         user: action.payload,
         // user incuded in payload (res.data)..name, email, avatar etc. except password // backend .select('-password')
       };
+    case SIGNUP_SUCCESS:
+      // localStorage.setItem('token', action.payload.token); // save token came from backend to localStorage
+      return {
+        ...state,
+        ...action.payload, // payload is token
+        authenticated: true,
+        loading: false,
+      };
+    case SIGNIN_SUCCESS:
+      // localStorage.setItem('token', action.payload.token); // save token came from backend to localStorage
+      return {
+        ...state,
+        ...action.payload, // payload is token
+        authenticated: true,
+        loading: false,
+      };
 
-    case SIGNUP_FAIL:
-    case SIGNIN_FAIL:
+    // case SIGNUP_FAIL:
+    // case SIGNIN_FAIL:
     case AUTH_FAIL:
     case LOGOUT:
-      localStorage.removeItem('token'); // remove token completely from localStorage
+      // localStorage.removeItem('token'); // remove token completely from localStorage
       return {
         ...state,
         token: null, // remove token from localStorage
