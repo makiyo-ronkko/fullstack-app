@@ -111,7 +111,7 @@ router.delete('/', auth, async (req, res) => {
     // id with token { appuser: req.user.id } from 'appuser' model, private with auth middleware
     await AppProfile.findOneAndDelete({ appuser: req.user.id });
     // Remove user
-    await AppProfile.findOneAndDelete({ _id: req.user.id });
+    await AppUser.findOneAndDelete({ _id: req.user.id });
     res.json({ msg: 'User removed' });
     // @todo - remove user posts
   } catch (err) {
