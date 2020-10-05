@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { signin } from '../../../actions/index';
 import PropTypes from 'prop-types';
 
-import Alert from '../../layout/Alert/Alert';
 import { alert } from '../../../actions/alert';
 
 import './Signin.css';
@@ -27,9 +26,8 @@ const Signin = (props) => {
 
   const submit = (e) => {
     e.preventDefault();
-    if (!props.authenticated) {
-      props.alert('Email address or password is invalid');
-    } else {
+    if (data.password && data.email) {
+      props.alert('Success', 'blue');
       props.signin(data.email, data.password);
       setSubmitted(true);
     }
@@ -44,7 +42,7 @@ const Signin = (props) => {
       <div className='Signin-background'>
         <div className='light-overlay'>
           <div className='container'>
-            <form className='Form' onSubmit={(e) => submit(e)}>
+            <form className='Form' onSubmit={submit}>
               <div className='Form-row'>
                 <h1>Log in</h1>
               </div>
@@ -54,7 +52,7 @@ const Signin = (props) => {
                   placeholder='Email'
                   name='email'
                   value={data.email}
-                  onChange={(e) => input(e)}
+                  onChange={input}
                 />
               </div>
               {submitted && !data.email && <p>Email is required</p>}
@@ -65,7 +63,7 @@ const Signin = (props) => {
                   placeholder='Password'
                   name='password'
                   value={data.password}
-                  onChange={(e) => input(e)}
+                  onChange={input}
                 />
               </div>
               {submitted && !data.password && <p>Password is required</p>}
@@ -78,9 +76,6 @@ const Signin = (props) => {
                 <Link to='register' className='Form-redirect'>
                   Register
                 </Link>
-              </div>
-              <div className='Form-row'>
-                <Alert />
               </div>
             </form>
           </div>

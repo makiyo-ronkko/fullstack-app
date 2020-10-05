@@ -2,12 +2,12 @@ import { CALL_ALERT, ALERT_CLEAR } from './types';
 import { v4 as uuidv4 } from 'uuid';
 
 // Dispatch alert message and type
-export const alert = (message, timeout = 3000) => (dispatch) => {
+export const alert = (message, type, timeout = 2000) => (dispatch) => {
   const id = uuidv4();
   // call CALL_ALERT reducer
   dispatch({
     type: CALL_ALERT,
-    payload: { message, id },
+    payload: { message, type, id },
   });
 
   // to avoid multiple alert messages on click

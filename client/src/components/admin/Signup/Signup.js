@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import './Signup.css';
 import { connect } from 'react-redux';
 import { register } from '../../../actions';
 import { alert } from '../../../actions/alert';
-import Alert from '../../layout/Alert/Alert';
 import PropTypes from 'prop-types';
+
+import './Signup.css';
 
 const Signup = (props) => {
   // passing props register, alert, authenticated
@@ -27,17 +27,18 @@ const Signup = (props) => {
   const submit = (e) => {
     e.preventDefault();
     if (data.password !== data.password2) {
-      console.log('Password do not match!');
-      props.alert('Password do not match');
+      // console.log('Password do not match!');
+      props.alert('Passwords unmatched. Please try again.', 'red');
     } else {
       props.register(data.name, data.email, data.password);
       setSubmitted(true);
+      props.alert('Registration success', 'blue');
     }
   };
 
   // if authenticated, redirect
   if (props.authenticated) {
-    return <Redirect to='/gallery' />;
+    return <Redirect to='/create-profile' />;
   }
 
   return (
@@ -45,7 +46,7 @@ const Signup = (props) => {
       <div className='Signup-background'>
         <div className='light-overlay'>
           <div className='container'>
-            <form className='Form' onSubmit={(e) => submit(e)}>
+            <form className='Form' onSubmit={submit}>
               <div className='Form-row'>
                 <h1>Registration</h1>
               </div>
@@ -55,7 +56,7 @@ const Signup = (props) => {
                   type='text'
                   placeholder='Name'
                   name='name'
-                  onChange={(e) => input(e)}
+                  onChange={input}
                   value={data.name}
                 />
               </div>
@@ -66,7 +67,7 @@ const Signup = (props) => {
                   type='email'
                   placeholder='Email'
                   name='email'
-                  onChange={(e) => input(e)}
+                  onChange={input}
                   value={data.email}
                 />
               </div>
@@ -77,7 +78,7 @@ const Signup = (props) => {
                   type='password'
                   placeholder='Password'
                   name='password'
-                  onChange={(e) => input(e)}
+                  onChange={input}
                   value={data.password}
                 />
               </div>
@@ -88,7 +89,7 @@ const Signup = (props) => {
                   type='password'
                   placeholder='Confirm password'
                   name='password2'
-                  onChange={(e) => input(e)}
+                  onChange={input}
                   value={data.password2}
                 />
               </div>
@@ -102,9 +103,6 @@ const Signup = (props) => {
                 <Link to='login' className='Form-redirect'>
                   Login
                 </Link>
-              </div>
-              <div className='Form-row'>
-                <Alert />
               </div>
             </form>
           </div>
