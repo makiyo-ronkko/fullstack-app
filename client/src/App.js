@@ -42,7 +42,11 @@ function App() {
           <Switch>
             <PrivateRoute exact path='/gallery' component={Gallery} />
             <PrivateRoute exact path='/profile' component={Profile} />
-            <Route exact path='/create-profile' component={profileForm} />
+            <PrivateRoute
+              exact
+              path='/create-profile'
+              component={profileForm}
+            />
             <Route exact path='/register' component={Signup} />
             <Route exact path='/login' component={Signin} />
           </Switch>
