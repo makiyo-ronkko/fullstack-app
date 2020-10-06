@@ -7,13 +7,6 @@
   --light-color: #fffefd;
 }
 
-.Profile-Form-title h1 {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-  text-transform: uppercase;
-}
-
 .ProfileForm {
   display: flex;
   flex-direction: column;
@@ -68,6 +61,31 @@ input[type='textarea'] {
   outline: none;
 }
 .ProfileForm button:hover {
+  cursor: pointer;
+}
+
+.Form-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Profile-FormLink {
+  font: inherit;
+  font-size: 1.2rem;
+  width: 10rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--primary-color);
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.Profile-Link:hover {
   cursor: pointer;
 }
 

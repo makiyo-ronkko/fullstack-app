@@ -6,11 +6,12 @@ import Navbar from './components/layout/Navbar/Navbar';
 import Signup from './components/admin/Signup/Signup';
 import Signin from './components/admin/Signin/Signin';
 import Gallery from './components/gallery/Gallery';
-import AccountForm from './components/accountForm/AccountForm';
+import Profile from './components/Profile/Profile';
+import profileForm from './components/profileForm/ProfileForm';
 import PrivateRoute from './components/routes/PrivateRoute';
 
 import { Provider } from 'react-redux';
-import tokenAuth from './utils/tokenAuth';
+import setAuthToken from './utils/setAuthToken';
 import { authUser } from './actions/index';
 import store from './store';
 import './App.css';
@@ -18,15 +19,16 @@ import './App.css';
 // authUser - action to be activated in main App
 // When reload the browser, "AUTH_USER" and token is stored in localStorage
 // authenticated to be true
-if (localStorage.token) {
-  tokenAuth(localStorage.token);
-}
+// if (localStorage.token) {
+//   setAuthToken(localStorage.token);
+// }
 
 function App() {
   // to dispatch {authUser} action, take "store" directly, use method .dispatch()
   // when state updated, useEffect keeps running (constant loop) and stop
   // with second bracket ... }, []); (when loaded, when mounted)
   useEffect(() => {
+    setAuthToken(localStorage.token);
     store.dispatch(authUser());
   }, []);
 
@@ -39,7 +41,8 @@ function App() {
           <Alert />
           <Switch>
             <PrivateRoute exact path='/gallery' component={Gallery} />
-            <Route exact path='/create-profile' component={AccountForm} />
+            <PrivateRoute exact path='/profile' component={Profile} />
+            <Route exact path='/create-profile' component={profileForm} />
             <Route exact path='/register' component={Signup} />
             <Route exact path='/login' component={Signin} />
           </Switch>

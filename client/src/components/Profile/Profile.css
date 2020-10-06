@@ -12,8 +12,9 @@
   align-items: center;
   flex-direction: column;
   width: 40rem;
-  min-height: 60rem;
+  min-height: 50rem;
   margin: auto;
+  margin-top: 1.5rem;
   padding-top: 2rem;
   border-radius: 0.2rem;
   background: var(--light-color);
@@ -46,4 +47,25 @@
   border-top: 2px dotted var(--dark-color);
   margin: 1rem 0;
   padding: 0;
+}
+
+.Profile-Link {
+  font: inherit;
+  width: 10rem;
+  padding: 0.5rem;
+  margin: 0.8rem;
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: var(--secondary-color);
+  color: var(--light-color);
+  border: none;
+  outline: none;
+  text-decoration: none;
+  text-align: center;
+}
+
+.Profile-Link:hover {
+  cursor: pointer;
 }

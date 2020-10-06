@@ -1,4 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUserProfile } from '../../actions/profile';
@@ -55,6 +56,9 @@ const Profile = (props) => {
           ) : (
             <Fragment>Loading... </Fragment>
           )}
+          <Link to='/create-profile' className='Profile-Link'>
+            Edit profile
+          </Link>
         </div>
       </div>
     </Fragment>
