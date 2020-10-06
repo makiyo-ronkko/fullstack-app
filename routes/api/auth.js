@@ -41,7 +41,7 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'Invalid Credentials.' }] });
+          .json({ errors: [{ message: 'Invalid Credentials.' }] });
       }
 
       // password = plain text, user.password = encrypted
@@ -49,7 +49,7 @@ router.post(
       if (!isMatch) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'Invalid Credentials.' }] });
+          .json({ errors: [{ message: 'Invalid Credentials.' }] });
       }
 
       // get payload which includes user id

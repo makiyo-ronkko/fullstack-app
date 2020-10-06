@@ -62,14 +62,14 @@ router.get('/:id', auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     if (!post) {
-      return res.status(404).json({ msg: 'Post not found' });
+      return res.status(404).json({ message: 'Post not found' });
     }
     res.json(post);
   } catch (err) {
     console.log(err.message);
     if (err.kind === 'ObjectId') {
       //  'ObjectId' = "_id": "5f4d2979b309163195202be0"
-      return res.status(404).json({ msg: 'Post not found' });
+      return res.status(404).json({ message: 'Post not found' });
     }
     res.status(500).send('Server Error');
   }
@@ -81,23 +81,23 @@ router.delete('/:id', auth, async (req, res) => {
     const post = await Post.findById(req.params.id);
 
     if (!post) {
-      return res.status(404).json({ msg: 'Post not found' });
+      return res.status(404).json({ message: 'Post not found' });
     }
 
     // Check appuser
     // post.appuser = object id
     // req.user.id = string
     if (post.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: 'User not authorized' });
+      return res.status(401).json({ message: 'User not authorized' });
     }
 
     await post.remove();
 
-    res.json({ msg: 'Post removed' });
+    res.json({ message: 'Post removed' });
   } catch (err) {
     console.log(err.message);
     if (err.kind === 'ObjectId') {
-      return res.status(404).json({ msg: 'Post not found' });
+      return res.status(404).json({ message: 'Post not found' });
     }
     res.status(500).send('Server Error');
   }
@@ -116,7 +116,7 @@ router.put('/like/:id', auth, async (req, res) => {
       post.likes.filter((like) => like.user.toString() === req.user.id).length >
       0
     ) {
-      return res.status(400).json({ msg: 'Post already liked' });
+      return res.status(400).json({ message: 'Post already liked' });
     }
     // unshift to add like to the beginning
     post.likes.unshift({ user: req.user.id });
@@ -140,7 +140,7 @@ router.put('/dislike/:id', auth, async (req, res) => {
       post.likes.filter((like) => like.user.toString() === req.user.id)
         .length === 0
     ) {
-      return res.status(400).json({ msg: 'Post has not yet been liked' });
+      return res.status(400).json({ message: 'Post has not yet been liked' });
     }
 
     // Get remove index
