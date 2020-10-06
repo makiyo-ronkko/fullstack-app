@@ -14,7 +14,7 @@ const AppUser = require('../../models/User');
 router.post(
   '/',
   [
-    // check([filed, message])
+    // check([filed, msg])
     check('name', 'Name is required.').not().isEmpty(),
     check('email', 'Please include a valid email.').isEmail(),
     check(
@@ -37,7 +37,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ errors: [{ message: 'User already exists.' }] });
+          .json({ errors: [{ msg: 'User already exists.' }] });
       }
       // Get users gravatar
       const avatar = gravatar.url(email, {
@@ -81,7 +81,7 @@ router.post(
         }
       );
     } catch (error) {
-      console.log(err.message);
+      console.log(err.msg);
       res.status(500).send('Server error');
     }
   }

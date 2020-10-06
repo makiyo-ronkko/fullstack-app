@@ -6,9 +6,7 @@ const config = require('config');
 module.exports = function (req, res, next) {
   const token = req.header('x-auth-token');
   if (!token) {
-    return res
-      .status(401)
-      .json({ message: 'No token, authentication dedined' });
+    return res.status(401).json({ msg: 'No token, authentication dedined' });
   }
   try {
     // Decode encrypted token
@@ -18,6 +16,6 @@ module.exports = function (req, res, next) {
     req.user = decoded.user;
     next();
   } catch (err) {
-    res.status(401).json({ message: 'Token is invalid.' });
+    res.status(401).json({ msg: 'Token is invalid.' });
   }
 };

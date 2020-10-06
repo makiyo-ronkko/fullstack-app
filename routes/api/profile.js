@@ -18,11 +18,11 @@ router.get('/user', auth, async (req, res) => {
     if (!profile) {
       return res
         .status(400)
-        .json({ message: 'Profile does not exist for this user' });
+        .json({ msg: 'Profile does not exist for this user' });
     }
     res.json(profile);
   } catch (err) {
-    console.log(err.message);
+    console.log(err.msg);
     res.status(500).send('Server Error');
   }
 });
@@ -64,7 +64,7 @@ router.post('/', auth, async (req, res) => {
     await profile.save();
     res.json(profile); // create and send to database
   } catch (err) {
-    console.log(err.message);
+    console.log(err.msg);
     res.status(500).send('Server Error');
   }
 });
@@ -78,7 +78,7 @@ router.get('/', async (req, res) => {
     ]);
     res.json(allProfiles);
   } catch (err) {
-    console.log(err.message);
+    console.log(err.msg);
     res.status(500).send('Server Error');
   }
 });
@@ -91,14 +91,14 @@ router.get('/user/:user_id', async (req, res) => {
       appuser: req.params.user_id,
     }).populate('appuser', ['name', 'avatar']);
 
-    if (!profile) return res.status(400).json({ message: 'Profile not found' });
+    if (!profile) return res.status(400).json({ msg: 'Profile not found' });
 
     res.json(profile);
   } catch (err) {
-    console.error(err.message);
+    console.error(err.msg);
     if (err.kind === 'ObjectId') {
       //  'ObjectId' = "_id":
-      return res.status(400).json({ message: 'Profile not found' });
+      return res.status(400).json({ msg: 'Profile not found' });
     }
     res.status(500).send('Server Error');
   }
@@ -112,10 +112,10 @@ router.delete('/', auth, async (req, res) => {
     await AppProfile.findOneAndDelete({ appuser: req.user.id });
     // Remove user
     await AppUser.findOneAndDelete({ _id: req.user.id });
-    res.json({ message: 'User removed' });
+    res.json({ msg: 'User removed' });
     // @todo - remove user posts
   } catch (err) {
-    console.error(err.message);
+    console.error(err.msg);
     res.status(500).send('Server Error');
   }
 });

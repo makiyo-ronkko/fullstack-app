@@ -15,7 +15,7 @@ router.get('/', auth, async (req, res) => {
     console.log(req.user.id);
     res.json(user);
   } catch (err) {
-    console.log(err.message);
+    console.log(err.msg);
     res.status(500).send('Sever error');
   }
 });
@@ -41,7 +41,7 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ errors: [{ message: 'Invalid Credentials.' }] });
+          .json({ errors: [{ msg: 'Invalid Credentials.' }] });
       }
 
       // password = plain text, user.password = encrypted
@@ -49,7 +49,7 @@ router.post(
       if (!isMatch) {
         return res
           .status(400)
-          .json({ errors: [{ message: 'Invalid Credentials.' }] });
+          .json({ errors: [{ msg: 'Invalid Credentials.' }] });
       }
 
       // get payload which includes user id
@@ -70,7 +70,7 @@ router.post(
         }
       );
     } catch (err) {
-      console.log(err.message);
+      console.log(err.msg);
       res.status(500).send('Server error');
     }
   }

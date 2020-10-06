@@ -58,10 +58,11 @@ export const register = (name, email, password) => async (dispatch) => {
     // Dispatch authUser action to run immediately
     dispatch(authUser());
   } catch (err) {
-    const errors = err.response.data.erros;
+    const errors = err.response.data.errors;
+    // console.log(errors);
     if (errors) {
       //console.log('Error', err.message);
-      errors.forEach((error) => dispatch(alert(error.message, 'red')));
+      errors.forEach((error) => dispatch(alert(error.msg, 'red')));
     }
     dispatch({
       type: SIGNUP_FAIL,
@@ -89,8 +90,9 @@ export const signin = (email, password) => async (dispatch) => {
     dispatch(authUser());
   } catch (err) {
     const errors = err.response.data.errors;
+    // console.log(errors);
     if (errors) {
-      errors.forEach((error) => dispatch(alert(error.message, 'red')));
+      errors.forEach((error) => dispatch(alert(error.msg, 'red')));
     }
     dispatch({
       type: SIGNIN_FAIL,

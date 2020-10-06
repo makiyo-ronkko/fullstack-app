@@ -14,7 +14,7 @@ const instance = axios.create({
 instance.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response.data.message === 'Token is invalid.') {
+    if (error.response.data.msg === 'Token is invalid.') {
       store.dispatch({ type: LOGOUT });
     }
     return Promise.reject(error);
