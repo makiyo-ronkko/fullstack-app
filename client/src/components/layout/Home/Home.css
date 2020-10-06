@@ -51,12 +51,28 @@
   outline: none;
 }
 
-.Home-button {
+.Home-login {
   color: var(--primary-color);
   text-decoration: none;
 }
 
-.Home-button:hover {
+.Home-login:hover {
   cursor: pointer;
   color: var(--gray-color);
+}
+
+.Home-register {
+  font: inherit;
+  width: 10rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.Home-register-text {
+  color: var(--primary-color);
+  font-size: 1rem;
 }

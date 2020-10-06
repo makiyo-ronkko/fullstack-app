@@ -13,15 +13,16 @@ const Home = () => {
             from peer artists.
           </p>
           <button>
-            <Link className='Home-button' to='/register'>
-              Register
-            </Link>
-          </button>
-          <button>
-            <Link className='Home-button' to='/login'>
+            <Link className='Home-login' to='/login'>
               Login
             </Link>
           </button>
+          <div className='Home-register-text'>
+            Haven't registered yet?
+            <Link to='/register' className='Home-register'>
+              Register
+            </Link>
+          </div>
         </div>
       </div>
     </div>
