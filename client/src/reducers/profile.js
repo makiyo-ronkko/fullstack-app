@@ -20,12 +20,6 @@ export default function (state = initialState, action) {
         error: action.payload,
         loading: false,
       };
-    case PROFILE_FAIL:
-      return {
-        ...state,
-        profile: null,
-        loading: false,
-      };
     case PROFILE_CLEAR:
       return {
         ...state,
