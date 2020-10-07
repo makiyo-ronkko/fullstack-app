@@ -1,6 +1,11 @@
 import axiosInterceptor from '../utils/axiosInterceptor';
 import { alert } from './alert';
-import { FETCH_PROFILE, PROFILE_FAIL } from './types';
+import {
+  FETCH_PROFILE,
+  PROFILE_FAIL,
+  PROFILE_CLEAR,
+  DELETE_ACCOUNT,
+} from './types';
 
 // fetch current user's profile - profile/user
 export const fetchUserProfile = () => async (dispatch) => {
@@ -47,6 +52,26 @@ export const createProfile = (data, history, edit = false) => async (
       errors.forEach((error) => dispatch(alert(error.message, 'red')));
     }
 
+    dispatch({
+      type: PROFILE_FAIL,
+      payload: {
+        message: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
+// Delete account
+export const deleteAccount = () => async (dispatch) => {
+  try {
+    await axiosInterceptor.delete('/profile');
+
+    dispatch({ type: PROFILE_CLEAR });
+    dispatch({ type: DELETE_ACCOUNT });
+
+    dispatch(alert('Your account has been removed'));
+  } catch (err) {
     dispatch({
       type: PROFILE_FAIL,
       payload: {

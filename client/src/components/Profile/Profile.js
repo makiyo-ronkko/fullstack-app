@@ -1,19 +1,21 @@
-import React, { useEffect, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, Fragment, useState } from 'react';
+import { Link, Prompt, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchUserProfile } from '../../actions/profile';
+import { fetchUserProfile, deleteAccount } from '../../actions/profile';
 import './Profile.css';
 
 const Profile = (props) => {
   // to getch profile data when as soon as page loaded
+
+  const [showDelete, setShowDelete] = useState(false);
 
   const { profile } = props.profile;
   const { user } = props.auth;
 
   useEffect(() => {
     props.fetchUserProfile();
-  }, []);
+  }, [fetchUserProfile]);
   console.log(profile);
 
   const renderAuthenticatedUserInfo = () => {
@@ -29,6 +31,16 @@ const Profile = (props) => {
         </>
       );
     }
+  };
+
+  // display modal to double check account deletion
+  const deleteConfirmation = () => {
+    setShowDelete(!showDelete);
+  };
+
+  // confirm account deletion
+  const confirmDelete = () => {
+    props.deleteAccount();
   };
 
   return props.loading && props.profile === null ? (
@@ -59,7 +71,38 @@ const Profile = (props) => {
           <Link to='/create-profile' className='Profile-Link'>
             Edit profile
           </Link>
+          <button onClick={deleteConfirmation}>Delete Account</button>
         </div>
+        {showDelete && (
+          <div className='Modal-delete' style={{ display: 'block' }}>
+            <span onClick={deleteConfirmation} className='close'>
+              ×
+            </span>
+            <form className='Modal-content'>
+              <div>
+                <h1>This action will permanently delete your account</h1>
+                <p>Are you sure you want to delete your account?</p>
+
+                <div>
+                  <button
+                    type='submit'
+                    onClick={deleteConfirmation}
+                    className='cancelbtn'
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type='submit'
+                    onClick={confirmDelete}
+                    className='deletebtn'
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        )}
       </div>
     </Fragment>
   );
@@ -67,6 +110,7 @@ const Profile = (props) => {
 
 Profile.propTypes = {
   fetchUserProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
 };
@@ -76,4 +120,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { fetchUserProfile })(Profile);
+export default connect(mapStateToProps, { fetchUserProfile, deleteAccount })(
+  Profile
+);

@@ -26,6 +26,11 @@ export default function (state = initialState, action) {
         profile: null,
         loading: false,
       };
+    case PROFILE_CLEAR:
+      return {
+        ...state,
+        profile: null,
+      };
     default:
       return state;
   }
