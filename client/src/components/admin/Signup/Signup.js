@@ -32,12 +32,12 @@ const Signup = (props) => {
     } else {
       props.register(data.name, data.email, data.password);
       setSubmitted(true);
-      props.alert('Registration success', 'blue');
     }
   };
 
   // if authenticated, redirect
   if (props.authenticated) {
+    props.alert('Registration success', 'blue');
     return <Redirect to='/create-profile' />;
   }
 
