@@ -26,11 +26,9 @@ const Signin = (props) => {
 
   const submit = (e) => {
     e.preventDefault();
-    if (data.password && data.email) {
-      props.alert('Success', 'blue');
-      props.signin(data.email, data.password);
-      setSubmitted(true);
-    }
+    props.signin(data.email, data.password);
+    setSubmitted(true);
+    props.alert('You have logged in', 'blue');
   };
 
   if (props.authenticated) {
