@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment, useState } from 'react';
-import { Link, Prompt, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUserProfile, deleteAccount } from '../../actions/profile';
@@ -15,7 +15,7 @@ const Profile = (props) => {
 
   useEffect(() => {
     props.fetchUserProfile();
-  }, [fetchUserProfile]);
+  }, [props.fetchUserProfile]);
   console.log(profile);
 
   const renderAuthenticatedUserInfo = () => {
@@ -42,6 +42,10 @@ const Profile = (props) => {
   const confirmDelete = () => {
     props.deleteAccount();
   };
+
+  if (!user) {
+    return <Redirect to='/' />;
+  }
 
   return props.loading && props.profile === null ? (
     <Fragment>Loading... </Fragment>
