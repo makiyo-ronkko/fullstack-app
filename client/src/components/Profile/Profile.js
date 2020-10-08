@@ -64,7 +64,10 @@ const Profile = (props) => {
                 <p>Location: {profile.location}</p>
                 <hr />
                 <p>
-                  Website: <a href={profile.website}>{profile.website}</a>
+                  Website:{' '}
+                  <a href={profile.website} target='_blank'>
+                    {profile.website}
+                  </a>
                 </p>
                 <hr />
               </div>
