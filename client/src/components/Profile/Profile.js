@@ -43,10 +43,6 @@ const Profile = (props) => {
     props.deleteAccount();
   };
 
-  if (!user) {
-    return <Redirect to='/' />;
-  }
-
   return props.loading && props.profile === null ? (
     <Fragment>Loading... </Fragment>
   ) : (
@@ -92,14 +88,14 @@ const Profile = (props) => {
 
                 <div>
                   <button
-                    type='submit'
+                    type='button'
                     onClick={deleteConfirmation}
                     className='cancelbtn'
                   >
                     Cancel
                   </button>
                   <button
-                    type='submit'
+                    type='button'
                     onClick={confirmDelete}
                     className='deletebtn'
                   >
@@ -127,6 +123,7 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { fetchUserProfile, deleteAccount })(
-  Profile
-);
+export default connect(mapStateToProps, {
+  fetchUserProfile,
+  deleteAccount,
+})(Profile);
