@@ -6,6 +6,8 @@ import { createProfile, fetchUserProfile } from '../../actions/profile';
 import './ProfileForm.css';
 
 const ProfileForm = (props) => {
+  const { profile, loading } = props.profile;
+
   const [data, setData] = useState({
     intro: '',
     website: '',
@@ -13,20 +15,22 @@ const ProfileForm = (props) => {
   });
 
   useEffect(() => {
-    if (!props.profile) props.fetchUserProfile();
-    if (!props.loading && props.profile) {
+    if (!profile) props.fetchUserProfile();
+    if (!loading && profile) {
       setData({
-        intro: !props.profile.intro ? '' : props.profile.intro,
-        website: !props.profile.website ? '' : props.profile.website,
-        location: !props.profile.location ? '' : props.profile.location,
+        intro: !profile.intro ? '' : profile.intro,
+        website: !profile.website ? '' : profile.website,
+        location: !profile.location ? '' : profile.location,
       });
     }
-  }, [props.loading, props.fetchUserProfile]);
+  }, [profile, loading, props.fetchUserProfile]);
+
+  console.log(props);
 
   const input = (e) => setData({ ...data, [e.target.name]: e.target.value });
   const submit = (e) => {
     e.preventDefault();
-    props.createProfile(data, props.history, props.profile ? true : false);
+    props.createProfile(data, props.history, profile ? true : false);
   };
 
   return (
@@ -43,7 +47,7 @@ const ProfileForm = (props) => {
             placeholder="I'm a photographer"
             name='intro'
             onChange={input}
-            value={props.intro}
+            value={data.intro}
           />
           <hr />
 
