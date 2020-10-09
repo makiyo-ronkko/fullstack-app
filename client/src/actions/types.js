@@ -19,3 +19,5 @@ export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const POST_FAIL = 'POST_FAIL';
+
+export const POST_LIKE = 'POST_LIKE';
