@@ -14,6 +14,7 @@
   box-shadow: 0 1px 1px rgba(183, 184, 180, 0.15);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .PostItem-user {
@@ -33,30 +34,47 @@
   padding: 0 0.4rem 0.2rem 0;
 }
 
-.PostItem-text img {
-  display: flex;
-  justify-content: center;
-  height: 15rem;
+.PostItem-img img {
+  display: block;
   padding: 0.2rem;
-  border-radius: 0.4rem;
-  width: auto;
+  border-radius: 0.3rem;
+  border: 0;
+  width: 100%;
+  height: auto;
   margin: auto;
 }
 
-.PostItem-text p {
+.PostItem-content {
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  padding: 0.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.PostItem-content p {
   padding: 0.4rem 0 0 0.4rem;
 }
 
-.PostItem-text .hashtag {
+.PostItem-content .hashtag {
   color: var(--primary-color);
 }
 
-.PostItem-text .date {
+.PostItem-content .date {
   color: var(--gray-color);
 }
 
 .likes {
   padding: 0.4rem 0 0 0.4rem;
+}
+
+.likes-btn button {
+  border: none;
+  background: none;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--gray-color);
+}
+
+.likes-btn button:hover {
+  cursor: pointer;
 }
