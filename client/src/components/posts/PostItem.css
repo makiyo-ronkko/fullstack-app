@@ -1,0 +1,58 @@
+:root {
+  --primary-color: #1c47a2;
+  --secondary-color: #a21c8a;
+  --support-color: #f1e6ab;
+  --gray-color: #bfc0c1;
+  --dark-color: #050505;
+  --light-color: #fffefd;
+}
+
+.PostItem {
+  border: 1px solid var(--gray-color);
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+  box-shadow: 0 1px 1px rgba(183, 184, 180, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.PostItem-user {
+  display: flex;
+  flex-direction: row;
+}
+
+.PostItem-user a {
+  text-decoration: none;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+}
+
+.PostItem-user img {
+  width: 10%;
+  padding: 0 0.4rem 0.2rem 0;
+}
+
+.PostItem-text img {
+  display: flex;
+  justify-content: center;
+  height: 15rem;
+  padding: 0.2rem;
+  border-radius: 0.4rem;
+  width: auto;
+  margin: auto;
+}
+
+.PostItem-text p {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.4rem 0 0 0.4rem;
+}
+
+.PostItem-text .hashtag {
+  color: var(--primary-color);
+}
+
+.PostItem-text .date {
+  color: var(--gray-color);
+}

@@ -1,0 +1,18 @@
+.PostList {
+  margin: 2rem 0;
+  padding: 1rem;
+}
+
+.PostList-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-auto-rows: minmax(360px, auto);
+  grid-gap: 2rem;
+}
+
+.PostList h1 {
+  margin: 0.4rem;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 1rem;
+}

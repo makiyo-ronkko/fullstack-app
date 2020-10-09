@@ -5,9 +5,9 @@ import Home from './components/layout/Home/Home';
 import Navbar from './components/layout/Navbar/Navbar';
 import Signup from './components/admin/Signup/Signup';
 import Signin from './components/admin/Signin/Signin';
-import Gallery from './components/gallery/Gallery';
-import Profile from './components/Profile/Profile';
+import Profile from './components/profile/Profile';
 import profileForm from './components/profileForm/ProfileForm';
+import PostList from './components/posts/PostList';
 import PrivateRoute from './components/routes/PrivateRoute';
 
 import { Provider } from 'react-redux';
@@ -40,7 +40,7 @@ function App() {
         <section className='App-container'>
           <Alert />
           <Switch>
-            <PrivateRoute exact path='/gallery' component={Gallery} />
+            <PrivateRoute exact path='/gallery' component={PostList} />
             <PrivateRoute exact path='/profile' component={Profile} />
             <PrivateRoute
               exact

@@ -16,3 +16,6 @@ export const FETCH_PROFILE = 'FETCH_PROFILE';
 export const PROFILE_FAIL = 'PROFILE_FAIL';
 export const PROFILE_CLEAR = 'PROFILE_CLEAR';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
+
+export const FETCH_POSTS = 'FETCH_POSTS';
+export const POST_FAIL = 'POST_FAIL';
