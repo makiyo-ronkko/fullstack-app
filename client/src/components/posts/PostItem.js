@@ -33,7 +33,7 @@ const PostItem = (props) => {
   return (
     <div className='PostItem'>
       <div className='PostItem-user'>
-        {props.auth && (
+        {props.auth.user && (
           <img src={props.auth.user.avatar} alt={props.auth.user.name} />
         )}
         <Link to={`/profile/${user}`}>
