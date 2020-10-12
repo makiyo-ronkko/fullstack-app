@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { postLike, removeLike } from '../../actions/post';
+import { postLike, removeLike, deletePost } from '../../actions/post';
 import Moment from 'react-moment';
 import './PostItem.css';
 
 const PostItem = (props) => {
   const { name, user, image, caption, hashtag, date, likes, _id } = props.post;
   console.log(props);
+
+  const [showDelete, setShowDelete] = useState(false);
 
   const fasColor = () => {
     if (likes.length >= 5) {
@@ -30,15 +32,67 @@ const PostItem = (props) => {
     }
   };
 
+  // display modal to double check post deletion
+  const deleteConfirmation = () => {
+    setShowDelete(!showDelete);
+  };
+
+  // confirm account deletion
+  //   const confirmDelete = () => {
+  //     props.deletePost(_id);
+  //   };
+
   return (
     <div className='PostItem'>
-      <div className='PostItem-user'>
-        {props.auth.user && (
-          <img src={props.auth.user.avatar} alt={props.auth.user.name} />
-        )}
-        <Link to={`/profile/${user}`}>
-          <h4>{name}</h4>
-        </Link>
+      <div className='PostItem-header'>
+        <div className='PostItem-user'>
+          {props.auth.user && (
+            <img src={props.auth.user.avatar} alt={props.auth.user.name} />
+          )}
+          <Link to={`/profile/${user}`}>
+            <h4>{name}</h4>
+          </Link>
+        </div>
+        <div className='PostItem-delete'>
+          {!props.loading && user === props.auth.user._id && (
+            <button
+              onClick={deleteConfirmation}
+              type='button'
+              className='delete-btn'
+            >
+              <i className='fas fa-times-circle'></i>
+            </button>
+          )}
+          {!props.loading && user === props.auth.user._id && showDelete && (
+            <div className='Modal-delete' style={{ display: 'block' }}>
+              <span onClick={deleteConfirmation} className='close'>
+                ×
+              </span>
+              <form className='Modal-content'>
+                <div>
+                  <p>Are you sure you want to delete your post?</p>
+
+                  <div>
+                    <button
+                      type='button'
+                      onClick={deleteConfirmation}
+                      className='cancelbtn'
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type='button'
+                      onClick={() => props.deletePost(_id)}
+                      className='deletebtn'
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          )}
+        </div>
       </div>
       <div className='PostItem-img'>
         <img src={image} alt={name} />
@@ -73,10 +127,13 @@ PostItem.propTypes = {
   auth: PropTypes.object.isRequired,
   postLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
+  deletePost: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { postLike, removeLike })(PostItem);
+export default connect(mapStateToProps, { postLike, removeLike, deletePost })(
+  PostItem
+);

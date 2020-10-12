@@ -1,6 +1,6 @@
 import axiosInterceptor from '../utils/axiosInterceptor';
 import { alert } from './alert';
-import { FETCH_POSTS, POST_FAIL, POST_LIKE } from './types';
+import { FETCH_POSTS, POST_FAIL, POST_LIKE, DELETE_POST } from './types';
 
 // fetch all posts
 export const fetchPosts = () => async (dispatch) => {
@@ -14,6 +14,26 @@ export const fetchPosts = () => async (dispatch) => {
     dispatch({
       type: POST_FAIL,
       payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// delete post
+export const deletePost = (id) => async (dispatch) => {
+  try {
+    await axiosInterceptor.delete(`/posts/${id}`);
+    dispatch({
+      type: DELETE_POST,
+      payload: id,
+    });
+    dispatch(alert('Post has removed', 'blue'));
+  } catch (err) {
+    dispatch({
+      type: POST_FAIL,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
     });
   }
 };
