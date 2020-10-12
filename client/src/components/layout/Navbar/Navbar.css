@@ -42,3 +42,102 @@
 .Navbar a:hover {
   color: var(--gray-color);
 }
+
+.burger {
+  /* position: fixed; */
+  position: absolute;
+  color: var(--primary-color);
+}
+
+.burger:hover {
+  cursor: pointer;
+}
+
+.Navbar .i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Navbar .Navbar-bars ul {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  top: 4rem;
+  justify-content: space-around;
+  background-color: rgb(245, 197, 205, 0.2);
+  border-radius: 0.2rem;
+  animation: slide-in 1s ease-out;
+}
+
+@keyframes slide-in {
+  0% {
+    top: -50px;
+  }
+  40% {
+    top: 4rem;
+  }
+  70% {
+    top: 4rem;
+  }
+  100% {
+    top: 4rem;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 1s ease-in;
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.Navbar .Navbar-bars ul:hover {
+  transition-delay: 0s;
+}
+
+.Navbar .Navbar-bars li {
+  padding: 0.3rem;
+}
+.Navbar .Navbar-bars a {
+  font-size: 1rem;
+}
+.Navbar .Navbar-bars a:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .Navbar {
+    display: flex;
+  }
+
+  .Navbar ul {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .Navbar .Navbar-bars ul {
+    right: 0;
+    top: 2.3rem;
+  }
+  @keyframes slide-in {
+    0% {
+      top: -50px;
+    }
+    40% {
+      top: 2.3rem;
+    }
+    70% {
+      top: 2.3rem;
+    }
+    100% {
+      top: 2.3rem;
+    }
+  }
+}

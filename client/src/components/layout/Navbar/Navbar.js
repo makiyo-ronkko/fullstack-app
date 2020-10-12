@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../../actions/index';
@@ -8,24 +8,48 @@ import './Navbar.css';
 const Navbar = (props) => {
   // passing logout props, auth
 
+  const [toggle, setToggle] = useState(false);
+  // const [fadeOut, setFadeOut] = useState(false);
+
+  const openToggle = () => {
+    setToggle(!toggle);
+    // setFadeOut(true);
+    setTimeout(() => {
+      // setFadeOut(true);
+      setToggle(toggle);
+    }, 3000);
+  };
+
   const isAuthenticated = (
-    <ul>
-      <li>
-        <NavLink exact to='/gallery'>
-          Gallery
-        </NavLink>
-      </li>
-      <li>
-        <NavLink exact to='/profile'>
-          <span>Profile</span>
-        </NavLink>
-      </li>
-      <li>
-        <a onClick={props.logout} href='#!'>
-          <span>Logout</span>
-        </a>
-      </li>
-    </ul>
+    <Fragment>
+      <ul>
+        <li>
+          <NavLink exact to='/gallery'>
+            Gallery
+          </NavLink>
+        </li>
+        <li className='Navbar-bars'>
+          <div className='burger'>
+            <i className='fas fa-user' onClick={openToggle} />
+          </div>
+          {toggle && (
+            // <ul className={`${fadeOut && 'fadeout'}`}>
+            <ul>
+              <li>
+                <NavLink exact to='/profile'>
+                  <span>Profile</span>
+                </NavLink>
+              </li>
+              <li>
+                <a onClick={props.logout} href='#!'>
+                  <span>Logout</span>
+                </a>
+              </li>
+            </ul>
+          )}
+        </li>
+      </ul>
+    </Fragment>
   );
 
   const notAuthenticated = (
