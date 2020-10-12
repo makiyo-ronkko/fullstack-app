@@ -11,6 +11,7 @@ const PostItem = (props) => {
   console.log(props);
 
   const [showDelete, setShowDelete] = useState(false);
+  const [showImg, setShowImg] = useState(false);
 
   const fasColor = () => {
     if (likes.length >= 5) {
@@ -37,10 +38,10 @@ const PostItem = (props) => {
     setShowDelete(!showDelete);
   };
 
-  // confirm account deletion
-  //   const confirmDelete = () => {
-  //     props.deletePost(_id);
-  //   };
+  // open img modal
+  const openImgModal = () => {
+    setShowImg(!showImg);
+  };
 
   return (
     <div className='PostItem'>
@@ -95,7 +96,7 @@ const PostItem = (props) => {
         </div>
       </div>
       <div className='PostItem-img'>
-        <img src={image} alt={name} />
+        <img onClick={openImgModal} src={image} alt={name} />
       </div>
       <div className='PostItem-content'>
         <div className='likes-btn'>
@@ -118,6 +119,14 @@ const PostItem = (props) => {
           Posted on &nbsp;<Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
       </div>
+      {showImg && (
+        <img
+          src={image}
+          alt={name}
+          className='PostItem-img-modal'
+          onClick={openImgModal}
+        />
+      )}
     </div>
   );
 };
