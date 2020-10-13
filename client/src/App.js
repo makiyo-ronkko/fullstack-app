@@ -6,6 +6,7 @@ import Navbar from './components/layout/Navbar/Navbar';
 import Signup from './components/admin/Signup/Signup';
 import Signin from './components/admin/Signin/Signin';
 import Profile from './components/profile/Profile';
+import ProfileView from './components/profile/ProfileView';
 import profileForm from './components/profileForm/ProfileForm';
 import PostList from './components/posts/PostList';
 import PrivateRoute from './components/routes/PrivateRoute';
@@ -42,6 +43,7 @@ function App() {
           <Switch>
             <PrivateRoute exact path='/gallery' component={PostList} />
             <PrivateRoute exact path='/profile' component={Profile} />
+            <Route exact path='/profile/:id' component={ProfileView} />
             <PrivateRoute
               exact
               path='/create-profile'
