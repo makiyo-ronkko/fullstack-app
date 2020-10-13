@@ -62,6 +62,23 @@ export const createProfile = (data, history, edit = false) => async (
   }
 };
 
+// get profile by id
+export const fetchProfileById = (id) => async (dispatch) => {
+  try {
+    const response = await axiosInterceptor.get(`/profile/user/${id}`);
+
+    dispatch({
+      type: FETCH_PROFILE,
+      payload: response.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_FAIL,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
 // Delete account
 export const deleteAccount = () => async (dispatch) => {
   try {
@@ -70,7 +87,7 @@ export const deleteAccount = () => async (dispatch) => {
     dispatch({ type: PROFILE_CLEAR });
     dispatch({ type: DELETE_ACCOUNT });
 
-    dispatch(alert('Your account has been removed'));
+    dispatch(alert('Your account has been removed', 'blue'));
   } catch (err) {
     dispatch({
       type: PROFILE_FAIL,
