@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import PostItem from './PostItem';
+import PostForm from './PostForm';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../../actions/post';
 import './PostList.css';
@@ -11,11 +12,12 @@ const PostList = (props) => {
   }, [props.fetchPosts, props.auth]);
 
   console.log(props);
-  return !props.auth ? (
+  return !props.auth && !props.post.posts ? (
     <div>Loading...</div>
   ) : (
     <div className='PostList'>
       <h1>Daily Art Sharing</h1>
+      <PostForm />
       <div className='PostList-cards'>
         {props.post.posts.map((post) => (
           <PostItem key={post._id} post={post} />

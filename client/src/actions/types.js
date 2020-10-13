@@ -23,3 +23,5 @@ export const POST_FAIL = 'POST_FAIL';
 export const POST_LIKE = 'POST_LIKE';
 
 export const DELETE_POST = 'DELETE_POST';
+export const FETCH_POST = 'FETCH_POST';
+export const ADD_POST = 'ADD_POST';

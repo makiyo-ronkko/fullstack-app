@@ -1,6 +1,14 @@
 import axiosInterceptor from '../utils/axiosInterceptor';
+import axios from 'axios';
 import { alert } from './alert';
-import { FETCH_POSTS, POST_FAIL, POST_LIKE, DELETE_POST } from './types';
+import {
+  FETCH_POSTS,
+  POST_FAIL,
+  POST_LIKE,
+  DELETE_POST,
+  FETCH_POST,
+  ADD_POST,
+} from './types';
 
 // fetch all posts
 export const fetchPosts = () => async (dispatch) => {
@@ -10,6 +18,47 @@ export const fetchPosts = () => async (dispatch) => {
       type: FETCH_POSTS,
       payload: response.data,
     });
+  } catch (err) {
+    dispatch({
+      type: POST_FAIL,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// fetch post by id
+export const fetchPost = (id) => async (dispatch) => {
+  try {
+    const response = await axiosInterceptor.get(`/posts/${id}`);
+    dispatch({
+      type: FETCH_POST,
+      payload: response.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_FAIL,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// add post
+export const addPost = (data) => async (dispatch) => {
+  //   const config = {
+  //     headers: {
+  //       'Content-Type': 'multipart/form-data',
+  //     },
+  //   };
+
+  try {
+    const response = await axiosInterceptor.post('/posts', data);
+
+    dispatch({
+      type: ADD_POST,
+      payload: response.data,
+    });
+
+    dispatch(alert('Post uploaded', 'blue'));
   } catch (err) {
     dispatch({
       type: POST_FAIL,
