@@ -59,6 +59,10 @@
   align-items: center;
 }
 
+.Navbar .i:hover {
+  color: var(--gray-color);
+}
+
 .Navbar .Navbar-bars ul {
   position: absolute;
   display: flex;
@@ -108,7 +112,7 @@
 .Navbar .Navbar-bars a {
   font-size: 1rem;
 }
-.Navbar .Navbar-bars a:hover {
+.Navbar-bars a:hover {
   cursor: pointer;
 }
 

@@ -17,7 +17,7 @@ const Navbar = (props) => {
     setTimeout(() => {
       // setFadeOut(true);
       setToggle(toggle);
-    }, 3000);
+    }, 5000);
   };
 
   const isAuthenticated = (
