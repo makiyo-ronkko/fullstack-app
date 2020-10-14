@@ -1,0 +1,57 @@
+:root {
+  --primary-color: #1c47a2;
+  --secondary-color: #a21c8a;
+  --support-color: #f1e6ab;
+  --gray-color: #bfc0c1;
+  --dark-color: #050505;
+  --light-color: #fffefd;
+}
+
+.PostForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.PostForm h3 {
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.Form-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PostForm button {
+  font: inherit;
+  width: 8rem;
+  padding: 0.5rem;
+  margin: 0.8rem;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: var(--gray-color);
+  color: var(--light-color);
+  border: none;
+  outline: none;
+}
+
+.PostForm button:hover {
+  cursor: pointer;
+}
+
+.PostForm input[type='text'],
+input[type='file'] {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border: none;
+  margin-top: 0.8rem;
+  background: rgb(240, 237, 237, 0.8);
+}
