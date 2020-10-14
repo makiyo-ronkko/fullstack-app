@@ -18,13 +18,13 @@ const Signup = (props) => {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const input = (e) =>
+  const inputHandler = (e) =>
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
 
-  const submit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     if (data.password !== data.password2) {
       // console.log('Password do not match!');
@@ -46,7 +46,7 @@ const Signup = (props) => {
       <div className='Signup-background'>
         <div className='light-overlay'>
           <div className='container'>
-            <form className='Form' onSubmit={submit}>
+            <form className='Form' onSubmit={submitHandler}>
               <div className='Form-row'>
                 <h1>Registration</h1>
               </div>
@@ -56,7 +56,7 @@ const Signup = (props) => {
                   type='text'
                   placeholder='Name'
                   name='name'
-                  onChange={input}
+                  onChange={inputHandler}
                   value={data.name}
                 />
               </div>
@@ -67,7 +67,7 @@ const Signup = (props) => {
                   type='email'
                   placeholder='Email'
                   name='email'
-                  onChange={input}
+                  onChange={inputHandler}
                   value={data.email}
                 />
               </div>
@@ -78,7 +78,7 @@ const Signup = (props) => {
                   type='password'
                   placeholder='Password'
                   name='password'
-                  onChange={input}
+                  onChange={inputHandler}
                   value={data.password}
                 />
               </div>
@@ -89,7 +89,7 @@ const Signup = (props) => {
                   type='password'
                   placeholder='Confirm password'
                   name='password2'
-                  onChange={input}
+                  onChange={inputHandler}
                   value={data.password2}
                 />
               </div>

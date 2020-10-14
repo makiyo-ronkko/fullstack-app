@@ -10,7 +10,7 @@ const PostForm = (props) => {
     caption: '',
     hashtag: '',
   });
-  const input = (e) => {
+  const inputHandler = (e) => {
     if (e.target.name === 'name') {
       setData({ ...data, image: e.target.files[0] });
     } else {
@@ -18,7 +18,7 @@ const PostForm = (props) => {
     }
   };
 
-  const submit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('caption', data.caption);
@@ -33,12 +33,12 @@ const PostForm = (props) => {
   return (
     <div className='PostForm'>
       <h3>New Post</h3>
-      <form onSubmit={submit}>
+      <form onSubmit={submitHandler}>
         <input
           type='file'
           name='image'
           //   value={data.image}
-          onChange={input}
+          onChange={inputHandler}
           accept='.jpg, .png'
         />
         <input
@@ -46,14 +46,14 @@ const PostForm = (props) => {
           name='caption'
           placeholder='caption'
           value={data.caption}
-          onChange={input}
+          onChange={inputHandler}
         />
         <input
           type='text'
           name='hashtag'
           placeholder='#hashtag'
           value={data.hashtag}
-          onChange={input}
+          onChange={inputHandler}
         />
         <div className='Form-btn'>
           <button type='submit'>Post</button>

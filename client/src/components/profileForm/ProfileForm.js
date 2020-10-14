@@ -27,8 +27,9 @@ const ProfileForm = (props) => {
 
   console.log(props);
 
-  const input = (e) => setData({ ...data, [e.target.name]: e.target.value });
-  const submit = (e) => {
+  const inputHandler = (e) =>
+    setData({ ...data, [e.target.name]: e.target.value });
+  const submitHandler = (e) => {
     e.preventDefault();
     props.createProfile(data, props.history, profile ? true : false);
   };
@@ -36,7 +37,7 @@ const ProfileForm = (props) => {
   return (
     <div className='Profile-Form'>
       <div className='container'>
-        <form className='ProfileForm' onSubmit={submit}>
+        <form className='ProfileForm' onSubmit={submitHandler}>
           <div className='Form-row'>
             <h1>Your Profile</h1>
           </div>
@@ -46,7 +47,7 @@ const ProfileForm = (props) => {
             type='textarea'
             placeholder="I'm a photographer"
             name='intro'
-            onChange={input}
+            onChange={inputHandler}
             value={data.intro}
           />
           <hr />
@@ -57,7 +58,7 @@ const ProfileForm = (props) => {
             placeholder='https://example.com'
             // pattern='https//.*'
             name='website'
-            onChange={input}
+            onChange={inputHandler}
             value={data.website}
           />
           <hr />
@@ -67,7 +68,7 @@ const ProfileForm = (props) => {
             type='text'
             placeholder='location'
             name='location'
-            onChange={input}
+            onChange={inputHandler}
             value={data.location}
           />
           <hr />

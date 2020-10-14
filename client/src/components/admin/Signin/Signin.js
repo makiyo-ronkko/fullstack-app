@@ -18,13 +18,13 @@ const Signin = (props) => {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const input = (e) =>
+  const inputHandler = (e) =>
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
 
-  const submit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     props.signin(data.email, data.password);
     setSubmitted(true);
@@ -40,7 +40,7 @@ const Signin = (props) => {
       <div className='Signin-background'>
         <div className='light-overlay'>
           <div className='container'>
-            <form className='Form' onSubmit={submit}>
+            <form className='Form' onSubmit={submitHandler}>
               <div className='Form-row'>
                 <h1>Log in</h1>
               </div>
@@ -50,7 +50,7 @@ const Signin = (props) => {
                   placeholder='Email'
                   name='email'
                   value={data.email}
-                  onChange={input}
+                  onChange={inputHandler}
                 />
               </div>
               {submitted && !data.email && <p>Email is required</p>}
@@ -61,7 +61,7 @@ const Signin = (props) => {
                   placeholder='Password'
                   name='password'
                   value={data.password}
-                  onChange={input}
+                  onChange={inputHandler}
                 />
               </div>
               {submitted && !data.password && <p>Password is required</p>}
