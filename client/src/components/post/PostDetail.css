@@ -1,0 +1,137 @@
+:root {
+  --primary-color: #1c47a2;
+  --secondary-color: #a21c8a;
+  --support-color: #f1e6ab;
+  --gray-color: #bfc0c1;
+  --dark-color: #050505;
+  --light-color: #fffefd;
+}
+
+.PostDetail {
+  /* border: 1px solid var(--gray-color); */
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+  box-shadow: 0 1px 1px rgba(183, 184, 180, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.PostDetail-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.PostDetail-user {
+  display: flex;
+  flex-direction: row;
+}
+
+.PostDetail-user a {
+  text-decoration: none;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+}
+
+.PostDetail-user img {
+  width: 10%;
+  height: auto;
+  margin: auto 0;
+  padding: 0 0.4rem 0.2rem 0;
+}
+
+.PostDetail-img img {
+  display: block;
+  padding: 0.2rem;
+  border-radius: 0.3rem;
+  border: 0;
+  width: 50%;
+  height: auto;
+  margin: auto;
+}
+.PostDetail-img img:hover {
+  cursor: pointer;
+  background: rgba(185, 113, 91, 0.4);
+}
+
+.PostDetail-img-modal-wrapper {
+  background: var(--dark-color);
+  height: 100%;
+}
+
+.PostDetail-img-modal {
+  /* max-height: 100%; */
+  height: auto;
+  width: auto;
+  position: fixed;
+  top: -100%;
+  bottom: -100%;
+  left: -100%;
+  right: -100%;
+  margin: auto;
+  border-radius: 0.3rem;
+  overflow: auto;
+  background: var(--dark-color);
+  z-index: 9999;
+}
+
+.PostDetail-img-modal:hover {
+  cursor: pointer;
+}
+
+.PostDetail-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.PostDetail-content p {
+  padding: 0.4rem 0 0 0.4rem;
+}
+
+.PostDetail-content .hashtag {
+  color: var(--primary-color);
+}
+
+.PostDetail-content .date {
+  color: var(--gray-color);
+}
+
+.Profile-FormLink {
+  font: inherit;
+  font-size: 1.2rem;
+  width: 10rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--secondary-color);
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.Profile-Link:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 920px) {
+  .PostDetail {
+    border-radius: 0;
+  }
+
+  .PostDetail-img-modal {
+    height: auto;
+    width: auto;
+    position: absolute;
+    top: -100%;
+    bottom: -100%;
+    left: -100%;
+    right: -100%;
+    margin: auto;
+  }
+}

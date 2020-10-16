@@ -9,7 +9,9 @@ import Profile from './components/profile/Profile';
 import ProfileView from './components/profile/ProfileView';
 import profileForm from './components/profileForm/ProfileForm';
 import PostList from './components/posts/PostList';
+import Post from './components/post/Post';
 import PrivateRoute from './components/routes/PrivateRoute';
+import Footer from './components/layout/Footer/Footer';
 
 import { Provider } from 'react-redux';
 import setAuthToken from './utils/setAuthToken';
@@ -42,8 +44,9 @@ function App() {
           <Alert />
           <Switch>
             <PrivateRoute exact path='/gallery' component={PostList} />
+            <PrivateRoute exact path='/gallery/:id' component={Post} />
             <PrivateRoute exact path='/profile' component={Profile} />
-            <Route exact path='/profile/:id' component={ProfileView} />
+            <PrivateRoute exact path='/profile/:id' component={ProfileView} />
             <PrivateRoute
               exact
               path='/create-profile'
@@ -53,6 +56,7 @@ function App() {
             <Route exact path='/login' component={Signin} />
           </Switch>
         </section>
+        <Footer />
       </Router>
     </Provider>
   );
