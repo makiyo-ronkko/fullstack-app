@@ -10,6 +10,7 @@ const PostSchema = new Schema({
     type: String,
   },
   image: {
+    data: Buffer,
     type: String,
   },
   caption: {
