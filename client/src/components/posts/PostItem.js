@@ -7,21 +7,10 @@ import Moment from 'react-moment';
 import './PostItem.css';
 
 const PostItem = (props) => {
-  const {
-    name,
-    user,
-    image,
-    caption,
-    hashtag,
-    date,
-    likes,
-    _id,
-    files,
-  } = props.post;
+  const { name, user, image, caption, hashtag, date, likes, _id } = props.post;
   console.log(props);
 
   const [showDelete, setShowDelete] = useState(false);
-  const [showImg, setShowImg] = useState(false);
 
   const fasColor = () => {
     if (likes.length >= 5) {
@@ -47,15 +36,6 @@ const PostItem = (props) => {
   const deleteConfirmation = () => {
     setShowDelete(!showDelete);
   };
-
-  // open img modal
-  const openImgModal = () => {
-    setShowImg(!showImg);
-  };
-
-  //   const imageStr = new Buffer(image).toString('base64');
-
-  console.log(image);
 
   return (
     <div className='PostItem'>
@@ -109,14 +89,11 @@ const PostItem = (props) => {
           )}
         </div>
       </div>
-      <div className='PostItem-img'>
-        <img
-          onClick={openImgModal}
-          //   src={image}
-          src={`data:image/png;base64,${image}`}
-          alt={name}
-        />
-      </div>
+      <Link to={`gallery/${_id}`}>
+        <div className='PostItem-img'>
+          <img src={`data:image/png;base64,${image}`} alt={name} />
+        </div>
+      </Link>
       <div className='PostItem-content'>
         <div className='likes-btn'>
           <button onClick={() => props.postLike(_id)}>
@@ -138,15 +115,6 @@ const PostItem = (props) => {
           Posted on &nbsp;<Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
       </div>
-      {showImg && (
-        <img
-          //   src={image}
-          src={`data:image/png;base64,${image}`}
-          alt={name}
-          className='PostItem-img-modal'
-          onClick={openImgModal}
-        />
-      )}
     </div>
   );
 };
