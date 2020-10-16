@@ -7,7 +7,17 @@ import Moment from 'react-moment';
 import './PostItem.css';
 
 const PostItem = (props) => {
-  const { name, user, image, caption, hashtag, date, likes, _id } = props.post;
+  const {
+    name,
+    user,
+    image,
+    caption,
+    hashtag,
+    date,
+    likes,
+    _id,
+    files,
+  } = props.post;
   console.log(props);
 
   const [showDelete, setShowDelete] = useState(false);
@@ -42,6 +52,10 @@ const PostItem = (props) => {
   const openImgModal = () => {
     setShowImg(!showImg);
   };
+
+  //   const imageStr = new Buffer(image).toString('base64');
+
+  console.log(image);
 
   return (
     <div className='PostItem'>
@@ -96,7 +110,12 @@ const PostItem = (props) => {
         </div>
       </div>
       <div className='PostItem-img'>
-        <img onClick={openImgModal} src={image} alt={name} />
+        <img
+          onClick={openImgModal}
+          //   src={image}
+          src={`data:image/png;base64,${image}`}
+          alt={name}
+        />
       </div>
       <div className='PostItem-content'>
         <div className='likes-btn'>
@@ -121,7 +140,8 @@ const PostItem = (props) => {
       </div>
       {showImg && (
         <img
-          src={image}
+          //   src={image}
+          src={`data:image/png;base64,${image}`}
           alt={name}
           className='PostItem-img-modal'
           onClick={openImgModal}
