@@ -7,56 +7,44 @@ const Post = require('../../models/Post');
 const Profile = require('../../models/Profile');
 const AppUser = require('../../models/User');
 
-const multer = require('multer');
-
-const storage = multer.diskStorage({
-  destination: '/',
-  filename: (req, file, cb) => {
-    cb(null, 'IMAGE-' + Date.now() + path.extname(file.originalname));
-  },
-});
-
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-    cb(null, true);
-  } else {
-    cb('Type file is invalid', false);
-  }
-};
-
-const upload = multer({
-  storage,
-  fileFilter,
-  limits: { fileSize: 10 * 1024 * 1024 },
-}).single('image');
+const upload = require('../../middleware/multer');
+const cloudinary = require('cloudinary').v2;
 
 // POST /posts: create a post
 router.post(
   '/',
-  [
-    auth,
-    // [check('image', 'Image is required').not().isEmpty()]
-  ],
-  upload,
+  auth,
+  upload.single('image'), // req.file is the `image` file
+  // upload.fields([
+  //   { name: 'image', maxCount: 1 },
+  //   { name: 'caption', maxCount: 1 },
+  //   { name: 'hashtag', maxCount: 1 },
+  // ]),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    // const image = req.file.buffer.toString('base64');
-
     try {
       // Loggedin condition with token, which gives an user id
       const user = await AppUser.findById(req.user.id).select('-password'); // no need to return password
 
+      // console.log(req.files['image']);
+      console.log(req.body);
+      console.log(req.file);
+
       const newPost = new Post({
-        image: req.body.image, // image from body
+        image: req.file.buffer.toString('base64'), // image from body
         name: user.name, // from database
         caption: req.body.caption,
         hashtag: req.body.hashtag,
         user: req.user.id, // from token
       });
+
+      // upload image file to cloudinary
+      // const result = await cloudinary.uploader.upload(req.file);
+      // newPost.image = result.secure_url;
 
       const post = await newPost.save(); // Save post object
       res.json(post); // Send back post object as response
