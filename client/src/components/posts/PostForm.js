@@ -10,12 +10,13 @@ const PostForm = (props) => {
     caption: '',
     hashtag: '',
   });
+
   const inputHandler = (e) => {
-    if (e.target.name === 'name') {
-      setData({ ...data, image: e.target.files[0] });
-    } else {
-      setData({ ...data, [e.target.name]: e.target.value });
-    }
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const inputFileHandler = (e) => {
+    setData({ image: e.target.files[0] });
   };
 
   const submitHandler = (e) => {
@@ -26,7 +27,11 @@ const PostForm = (props) => {
     formData.append('image', data.image);
     // props.addPost(data);
     props.addPost(formData);
-    console.log(formData);
+    // Display the values
+    for (var value of formData.values()) {
+      console.log(value);
+    }
+    console.log(data.image);
     setData('');
   };
 
@@ -38,7 +43,7 @@ const PostForm = (props) => {
           type='file'
           name='image'
           //   value={data.image}
-          onChange={inputHandler}
+          onChange={inputFileHandler}
           accept='.jpg, .png'
         />
         <input
