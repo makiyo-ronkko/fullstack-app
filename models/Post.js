@@ -31,6 +31,23 @@ const PostSchema = new Schema({
       },
     },
   ],
+  comments: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+      },
+      text: {
+        type: String,
+      },
+      name: {
+        type: String,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,

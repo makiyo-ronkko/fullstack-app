@@ -169,4 +169,70 @@ router.put('/dislike/:id', auth, async (req, res) => {
   }
 });
 
+// POST /comment/:id create a comment
+router.post('/comment/:id', auth, async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  try {
+    // Loggedin condition with token, which gives an user id
+    const user = await AppUser.findById(req.user.id).select('-password'); // no need to return password
+    const post = await Post.findById(req.params.id);
+
+    // no model, plain object
+    const newComment = {
+      text: req.body.text, // text only comes from body
+      name: user.name, // from database
+      user: req.user.id, // from token
+    };
+
+    post.comments.unshift(newComment);
+    console.log(newComment);
+    console.log(newComment.text);
+
+    await post.save(); // Save post object
+    res.json(post.comments); // Send back comments object as response
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// DELETE /comment/:id/:comment_id create a comment
+router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    // Pull out comment
+    const comment = post.comments.find(
+      (comment) => comment.id === req.params.comment_id
+    );
+
+    // Make sure comment exists
+    if (!comment) {
+      return res.status(404).json({ msg: 'Comment not found' });
+    }
+
+    // Check if user is the one who created the comment
+    if (comment.user.toString() !== req.user.id) {
+      return res.status(404).json({ msg: 'User not authorized' });
+    }
+    // Get remove index
+    // indexOf returns the first index at which a given element found in the array
+    const removeIndex = post.comments
+      .map((comment) => comment.user.toString())
+      .indexOf(req.user.id);
+
+    post.comments.splice(removeIndex, 1);
+
+    await post.save();
+    res.json(post.comments); // return like id + user id who clicked like
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
