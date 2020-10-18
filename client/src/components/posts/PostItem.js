@@ -7,7 +7,17 @@ import Moment from 'react-moment';
 import './PostItem.css';
 
 const PostItem = (props) => {
-  const { name, user, image, caption, hashtag, date, likes, _id } = props.post;
+  const {
+    name,
+    user,
+    image,
+    caption,
+    hashtag,
+    date,
+    likes,
+    _id,
+    comments,
+  } = props.post;
   console.log(props);
 
   const [showDelete, setShowDelete] = useState(false);
@@ -114,6 +124,9 @@ const PostItem = (props) => {
         <p className='date'>
           Posted on &nbsp;<Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
+        <Link to={`/gallery/${_id}`}>
+          Comment: {comments.length > 0 && <span>{comments.length}</span>}
+        </Link>
       </div>
     </div>
   );
