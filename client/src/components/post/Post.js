@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPost } from '../../actions/post';
 import PostDetail from './PostDetail';
+import CommentItem from './CommentItem';
+import CommentForm from './CommentForm';
 
 const Post = (props) => {
   useEffect(() => {
     props.fetchPost(props.match.params.id);
-  }, [props.fetchPost, props.loading]);
+  }, [props.fetchPost]);
 
   console.log(props);
 
@@ -15,9 +17,19 @@ const Post = (props) => {
     <div>Loading...</div>
   ) : (
     <div>
-      {/* <PostDetail post={props.post} /> */}
       <div className='PostItem-img'>
         {props.post.post && <PostDetail props={props.post.post} />}
+      </div>
+      <div className='comments'>
+        {props.post.post && <CommentForm postId={props.post.post._id} />}
+        {props.post.comments &&
+          props.post.comments.map((comment) => (
+            <CommentItem
+              key={comment._id}
+              comment={comment}
+              postId={props.post.post._id}
+            />
+          ))}
       </div>
     </div>
   );

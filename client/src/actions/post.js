@@ -8,6 +8,8 @@ import {
   DELETE_POST,
   FETCH_POST,
   ADD_POST,
+  ADD_COMMENT,
+  DELETE_COMMENT,
 } from './types';
 
 // fetch all posts
@@ -52,7 +54,6 @@ export const addPost = (data) => async (dispatch) => {
 
   try {
     const response = await axiosInterceptor.post('/posts', data);
-
     dispatch({
       type: ADD_POST,
       payload: response.data,
@@ -113,6 +114,47 @@ export const removeLike = (id) => async (dispatch) => {
       type: POST_LIKE,
       payload: { id, likes: response.data },
     });
+  } catch (err) {
+    dispatch({
+      type: POST_FAIL,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// add comment
+export const addComment = (postId, data) => async (dispatch) => {
+  try {
+    const response = await axiosInterceptor.post(
+      `/posts/comment/${postId}`,
+      data
+    );
+    console.log('action', response.data, data);
+    dispatch({
+      type: ADD_COMMENT,
+      payload: response.data,
+    });
+
+    dispatch(alert('Comment Added', 'blue'));
+  } catch (err) {
+    dispatch({
+      type: POST_FAIL,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// delete comment
+export const deleteComment = (postId, commentId) => async (dispatch) => {
+  try {
+    await axiosInterceptor.delete(`/posts/comment/${postId}/${commentId}`);
+
+    dispatch({
+      type: DELETE_COMMENT,
+      payload: commentId,
+    });
+
+    dispatch(alert('Comment Removed', 'blue'));
   } catch (err) {
     dispatch({
       type: POST_FAIL,

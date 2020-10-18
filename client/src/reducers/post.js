@@ -5,6 +5,8 @@ import {
   DELETE_POST,
   FETCH_POST,
   ADD_POST,
+  ADD_COMMENT,
+  DELETE_COMMENT,
 } from '../actions/types';
 
 const initialState = {
@@ -57,6 +59,23 @@ export default function (state = initialState, action) {
             ? { ...post, likes: action.payload.likes }
             : post
         ),
+        loading: false,
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        post: { ...state.post, comments: action.payload },
+        loading: false,
+      };
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          comments: state.post.comments.filter(
+            (comment) => comment._id !== action.payload
+          ),
+        },
         loading: false,
       };
     default:

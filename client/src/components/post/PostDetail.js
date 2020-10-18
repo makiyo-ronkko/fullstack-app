@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import './PostDetail.css';
+import CommentItem from './CommentItem';
 
 const PostDetail = (props) => {
   const {
@@ -14,10 +15,11 @@ const PostDetail = (props) => {
     hashtag,
     date,
     likes,
+    comments,
     _id,
   } = props.post.post;
 
-  const [showImg, setShowImg] = useState(false);
+  // const [showImg, setShowImg] = useState(false);
 
   console.log(props);
 
@@ -42,9 +44,9 @@ const PostDetail = (props) => {
   };
 
   // open img modal
-  const openImgModal = () => {
-    setShowImg(!showImg);
-  };
+  // const openImgModal = () => {
+  //   setShowImg(!showImg);
+  // };
 
   return (
     <div className='PostDetail'>
@@ -65,7 +67,7 @@ const PostDetail = (props) => {
       </div>
       <div className='PostDetail-img'>
         <img
-          onClick={openImgModal}
+          // onClick={openImgModal}
           //   src={image}
           src={`data:image/png;base64,${image}`}
           alt={name}
@@ -84,17 +86,16 @@ const PostDetail = (props) => {
           Posted on &nbsp;
           <Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
+        {comments && (
+          <div>
+            {' '}
+            {props.auth.user &&
+              comments.map((comment) => (
+                <CommentItem key={comment._id} comment={comment} postId={_id} />
+              ))}
+          </div>
+        )}
       </div>
-      {showImg && (
-        <div className='PostDetail-img-modal-wrapper'>
-          <img
-            src={`data:image/png;base64,${image}`}
-            alt={name}
-            className='PostDetail-img-modal'
-            onClick={openImgModal}
-          />
-        </div>
-      )}
     </div>
   );
 };
@@ -102,9 +103,6 @@ const PostDetail = (props) => {
 PostDetail.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-  postLike: PropTypes.func.isRequired,
-  removeLike: PropTypes.func.isRequired,
-  deletePost: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
