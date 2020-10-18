@@ -10,7 +10,7 @@ import './Signup.css';
 const Signup = (props) => {
   // passing props register, alert, authenticated
 
-  const [data, setData] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
@@ -19,18 +19,18 @@ const Signup = (props) => {
   const [submitted, setSubmitted] = useState(false);
 
   const inputHandler = (e) =>
-    setData({
-      ...data,
+    setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
     });
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (data.password !== data.password2) {
+    if (formData.password !== formData.password2) {
       // console.log('Password do not match!');
       props.alert('Passwords unmatched. Please try again.', 'red');
     } else {
-      props.register(data.name, data.email, data.password);
+      props.register(formData.name, formData.email, formData.password);
       setSubmitted(true);
       props.alert('Registration success', 'blue');
     }
@@ -57,10 +57,10 @@ const Signup = (props) => {
                   placeholder='Name'
                   name='name'
                   onChange={inputHandler}
-                  value={data.name}
+                  value={formData.name}
                 />
               </div>
-              {submitted && !data.name && <p>Name is required</p>}
+              {submitted && !formData.name && <p>Name is required</p>}
 
               <div className='Form-row'>
                 <input
@@ -68,10 +68,10 @@ const Signup = (props) => {
                   placeholder='Email'
                   name='email'
                   onChange={inputHandler}
-                  value={data.email}
+                  value={formData.email}
                 />
               </div>
-              {submitted && !data.email && <p>Email is required</p>}
+              {submitted && !formData.email && <p>Email is required</p>}
 
               <div className='Form-row'>
                 <input
@@ -79,10 +79,10 @@ const Signup = (props) => {
                   placeholder='Password'
                   name='password'
                   onChange={inputHandler}
-                  value={data.password}
+                  value={formData.password}
                 />
               </div>
-              {submitted && !data.password && <p>Password is required</p>}
+              {submitted && !formData.password && <p>Password is required</p>}
 
               <div className='Form-row'>
                 <input
@@ -90,10 +90,10 @@ const Signup = (props) => {
                   placeholder='Confirm password'
                   name='password2'
                   onChange={inputHandler}
-                  value={data.password2}
+                  value={formData.password2}
                 />
               </div>
-              {submitted && !data.password2 && <p>Confirm your password</p>}
+              {submitted && !formData.password2 && <p>Confirm your password</p>}
 
               <div className='Form-row'>
                 <button type='submit'>Register</button>

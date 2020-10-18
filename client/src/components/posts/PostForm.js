@@ -5,34 +5,34 @@ import PropTypes from 'prop-types';
 import './PostForm.css';
 
 const PostForm = (props) => {
-  const [data, setData] = useState({
+  const [inputData, setInputData] = useState({
     image: null,
     caption: '',
     hashtag: '',
   });
 
   const inputHandler = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+    setInputData({ ...inputData, [e.target.name]: e.target.value });
   };
 
   const inputFileHandler = (e) => {
-    setData({ image: e.target.files[0] });
+    setInputData({ image: e.target.files[0] });
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('caption', data.caption);
-    formData.append('hashtag', data.hashtag);
-    formData.append('image', data.image);
-    // props.addPost(data);
+    formData.append('caption', inputData.caption);
+    formData.append('hashtag', inputData.hashtag);
+    formData.append('image', inputData.image);
+    // props.addPost(inputData);
     props.addPost(formData);
     // Display the values
     for (var value of formData.values()) {
       console.log(value);
     }
-    console.log(data.image);
-    setData('');
+    console.log(inputData.image);
+    setInputData('');
   };
 
   return (
@@ -42,7 +42,7 @@ const PostForm = (props) => {
         <input
           type='file'
           name='image'
-          //   value={data.image}
+          //   value={inputData.image}
           onChange={inputFileHandler}
           accept='.jpg, .png'
         />
@@ -50,14 +50,14 @@ const PostForm = (props) => {
           type='text'
           name='caption'
           placeholder='caption'
-          value={data.caption}
+          value={inputData.caption}
           onChange={inputHandler}
         />
         <input
           type='text'
           name='hashtag'
           placeholder='#hashtag'
-          value={data.hashtag}
+          value={inputData.hashtag}
           onChange={inputHandler}
         />
         <div className='Form-btn'>

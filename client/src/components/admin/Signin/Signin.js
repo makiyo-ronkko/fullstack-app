@@ -11,7 +11,7 @@ import './Signin.css';
 const Signin = (props) => {
   // passing props signin, authenticated
 
-  const [data, setData] = useState({
+  const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
@@ -19,14 +19,14 @@ const Signin = (props) => {
   const [submitted, setSubmitted] = useState(false);
 
   const inputHandler = (e) =>
-    setData({
-      ...data,
+    setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
     });
 
   const submitHandler = (e) => {
     e.preventDefault();
-    props.signin(data.email, data.password);
+    props.signin(formData.email, formData.password);
     setSubmitted(true);
     props.alert('You have logged in', 'blue');
   };
@@ -49,22 +49,22 @@ const Signin = (props) => {
                   type='email'
                   placeholder='Email'
                   name='email'
-                  value={data.email}
+                  value={formData.email}
                   onChange={inputHandler}
                 />
               </div>
-              {submitted && !data.email && <p>Email is required</p>}
+              {submitted && !formData.email && <p>Email is required</p>}
 
               <div className='Form-row'>
                 <input
                   type='password'
                   placeholder='Password'
                   name='password'
-                  value={data.password}
+                  value={formData.password}
                   onChange={inputHandler}
                 />
               </div>
-              {submitted && !data.password && <p>Password is required</p>}
+              {submitted && !formData.password && <p>Password is required</p>}
 
               <div className='Form-row'>
                 <button type='submit'>Login</button>
