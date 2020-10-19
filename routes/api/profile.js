@@ -6,6 +6,7 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const AppProfile = require('../../models/Profile');
 const AppUser = require('../../models/User');
+const AppPost = require('../../models/Post');
 
 // GET /profile: Get current user's profile
 router.get('/user', auth, async (req, res) => {
@@ -112,8 +113,10 @@ router.delete('/', auth, async (req, res) => {
     await AppProfile.findOneAndDelete({ appuser: req.user.id });
     // Remove user
     await AppUser.findOneAndDelete({ _id: req.user.id });
+
+    // Remove user posts
+    await AppPost.deleteMany({ appuser: req.user.id });
     res.json({ msg: 'User removed' });
-    // @todo - remove user posts
   } catch (err) {
     console.error(err.msg);
     res.status(500).send('Server Error');
