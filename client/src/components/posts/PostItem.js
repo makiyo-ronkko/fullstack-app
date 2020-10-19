@@ -124,8 +124,13 @@ const PostItem = (props) => {
         <p className='date'>
           Posted on &nbsp;<Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
-        <Link to={`/gallery/${_id}`}>
-          Comment: {comments.length > 0 && <span>{comments.length}</span>}
+        <Link to={`/gallery/${_id}`} className='PostItem-comment'>
+          Comment:{' '}
+          {comments.length > 0 ? (
+            <span>{comments.length}</span>
+          ) : (
+            <span>0</span>
+          )}
         </Link>
       </div>
     </div>

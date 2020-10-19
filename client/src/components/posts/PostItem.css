@@ -20,6 +20,7 @@
 .PostItem-header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0.3rem;
 }
 
 .PostItem-user {
@@ -32,13 +33,14 @@
   color: var(--primary-color);
   display: flex;
   align-items: center;
+  padding-left: 0.8rem;
 }
 
 .PostItem-user img {
-  width: 10%;
+  width: 15%;
   height: auto;
   margin: auto 0;
-  padding: 0 0.4rem 0.2rem 0;
+  border-radius: 50%;
 }
 
 .PostItem-delete .delete-btn {
@@ -75,7 +77,7 @@
 }
 
 .PostItem-content p {
-  padding: 0.4rem 0 0 0.4rem;
+  padding: 0.4rem 0 0 0;
 }
 
 .PostItem-content .hashtag {
@@ -87,13 +89,13 @@
 }
 
 .likes {
-  padding: 0.4rem 0 0 0.4rem;
+  padding: 0.4rem 0 0 0;
 }
 
 .likes-btn button {
   border: none;
   background: none;
-  padding: 0.5rem;
+  padding: 0 0.4rem 0 0;
   font-size: 0.8rem;
   color: var(--gray-color);
 }
@@ -113,6 +115,13 @@
   overflow: auto;
   background-color: #fffafa;
   background-color: var(--gray-color);
+}
+
+.PostItem-comment {
+  text-decoration: none;
+  padding: 0.4rem 0 0 0;
+  color: var(--secondary-color);
+  font-weight: bolder;
 }
 
 .Modal-content {
@@ -182,5 +191,8 @@
 @media (max-width: 920px) {
   .PostItem {
     border-radius: 0;
+  }
+  .PostItem-img img {
+    padding: 0;
   }
 }
