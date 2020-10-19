@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signin } from '../../../actions/index';
@@ -17,6 +17,10 @@ const Signin = (props) => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [props.loading]);
 
   const inputHandler = (e) =>
     setFormData({

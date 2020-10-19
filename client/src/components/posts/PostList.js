@@ -9,6 +9,7 @@ import './PostList.css';
 const PostList = (props) => {
   useEffect(() => {
     props.fetchPosts();
+    window.scrollTo(0, 0);
   }, [props.fetchPosts, props.auth]);
 
   console.log(props);

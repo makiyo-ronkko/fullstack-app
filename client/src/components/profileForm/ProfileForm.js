@@ -23,6 +23,7 @@ const ProfileForm = (props) => {
         location: !profile.location ? '' : profile.location,
       });
     }
+    window.scrollTo(0, 0);
   }, [profile, loading, props.fetchUserProfile]);
 
   console.log(props);

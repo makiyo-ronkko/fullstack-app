@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
-const Home = () => {
+const Home = (props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [props.loading]);
+
   return (
     <div className='Home'>
       <div className='light-overlay'>
