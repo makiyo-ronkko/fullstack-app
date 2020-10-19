@@ -36,6 +36,7 @@ i {
 }
 
 .CommentForm input[type='text'] {
+  font: inherit;
   display: block;
   width: 200%;
   padding: 0.5rem;
