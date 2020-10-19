@@ -4,12 +4,10 @@ import { connect } from 'react-redux';
 import { fetchProfileById } from '../../actions/profile';
 import { fetchPosts } from '../../actions/post';
 import PropTypes from 'prop-types';
-import './Profile.css';
+import './ProfileView.css';
 
 const ProfileView = (props) => {
   const { profile } = props.profile;
-  const { name, user, image, caption, hashtag, date, likes, _id } = props.post;
-
   const posts = props.post.posts;
 
   useEffect(() => {
@@ -20,10 +18,17 @@ const ProfileView = (props) => {
 
   console.log(props);
   console.log(posts);
+  console.log(profile);
+
   return (
     <div className='container'>
       {profile !== null && (
-        <div className='Profile'>
+        <div className='ProfileView-container'>
+          <div className='Form-btn'>
+            <Link to='/gallery' className='Profile-FormLink'>
+              <i className='fas fa-arrow-alt-circle-left'></i>
+            </Link>
+          </div>
           <h1>Profile</h1>
           <div>
             {profile.appuser.avatar && (
@@ -45,18 +50,23 @@ const ProfileView = (props) => {
             )}
             <hr />
           </div>
-          <div className='Form-btn'>
-            <Link to='/gallery' className='Profile-FormLink'>
-              <i className='fas fa-arrow-alt-circle-left'></i>
-            </Link>
+          <div className='ProfileView-posts'>
+            {posts &&
+              posts
+                .filter((post) => post.user === profile.appuser._id)
+                .map((post) => (
+                  <div key={post.id} className='ProfileView-post-container'>
+                    <Link to={`/gallery/${post._id}`}>
+                      <img
+                        src={`data:image/png;base64,${post.image}`}
+                        alt={post.name}
+                        className='ProfileView-img'
+                      />
+                    </Link>
+                    <p>{post.caption}</p>
+                  </div>
+                ))}
           </div>
-          {/* {profile.appuser._id && */}
-          {/* {profile.appuser._id === user && */}
-          {posts.map((post) => (
-            <div key={post.id}>
-              <img src={post.image} alt={post.name} />
-            </div>
-          ))}
         </div>
       )}
     </div>
