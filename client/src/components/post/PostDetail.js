@@ -19,8 +19,6 @@ const PostDetail = (props) => {
     _id,
   } = props.post.post;
 
-  // const [showImg, setShowImg] = useState(false);
-
   console.log(props);
 
   const fasColor = () => {
@@ -43,11 +41,6 @@ const PostDetail = (props) => {
     }
   };
 
-  // open img modal
-  // const openImgModal = () => {
-  //   setShowImg(!showImg);
-  // };
-
   return (
     <div className='PostDetail'>
       <div className='Form-btn'>
@@ -66,12 +59,7 @@ const PostDetail = (props) => {
         </div>
       </div>
       <div className='PostDetail-img'>
-        <img
-          // onClick={openImgModal}
-          //   src={image}
-          src={`data:image/png;base64,${image}`}
-          alt={name}
-        />
+        <img src={`data:image/png;base64,${image}`} alt={name} />
       </div>
       <div className='PostDetail-content'>
         <div className='likes' style={{ color: fasColor() }}>
@@ -86,6 +74,7 @@ const PostDetail = (props) => {
           Posted on &nbsp;
           <Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
+        <hr />
         {comments && (
           <div>
             {' '}
