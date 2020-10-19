@@ -11,7 +11,7 @@
 }
 
 .PostList h1 {
-  margin: 0.4rem;
+  margin: 0.8rem;
   text-transform: uppercase;
   text-align: center;
   padding-bottom: 0.4rem;
@@ -19,6 +19,11 @@
 
 @media (max-width: 920px) {
   .PostList {
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .PostList-cards {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-auto-rows: minmax(320px, auto);
   }
 }
