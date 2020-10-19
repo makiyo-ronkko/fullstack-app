@@ -43,6 +43,7 @@
 .Form input[type='text'],
 .Form input[type='email'],
 .Form input[type='password'] {
+  font: inherit;
   display: block;
   width: 100%;
   padding: 0.5rem;
