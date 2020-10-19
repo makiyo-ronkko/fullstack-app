@@ -1,0 +1,57 @@
+:root {
+  --primary-color: #1c47a2;
+  --secondary-color: #a21c8a;
+  --support-color: #f1e6ab;
+  --gray-color: #bfc0c1;
+  --dark-color: #050505;
+  --light-color: #fffefd;
+}
+
+.CommentItem {
+  display: flex;
+  align-items: flex-start;
+}
+
+.CommentItem a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: bolder;
+}
+
+.CommentItem-profile {
+}
+
+.CommentItem-comment {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1.5rem;
+  align-items: center;
+  font-size: 0.8rem;
+  width: 600px;
+}
+
+.CommentItem-date {
+  color: var(--gray-color);
+  margin-left: 0.4rem;
+}
+
+.CommentItem-comment button {
+  align-items: center;
+  width: 1rem;
+  margin: 0.2rem;
+  border-radius: 1rem;
+  background: var(--gray-color);
+  color: var(--light-color);
+  border: none;
+  outline: none;
+}
+
+.CommentItem-comment button:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .CommentItem-date {
+    width: 80px;
+  }
+}

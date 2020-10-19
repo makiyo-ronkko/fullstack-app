@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addComment } from '../../actions/post';
+import './CommentForm.css';
 
 const CommentForm = (props) => {
   const [text, settext] = useState('');
@@ -19,7 +20,7 @@ const CommentForm = (props) => {
   };
 
   return (
-    <div>
+    <div className='CommentForm'>
       <form onSubmit={submitHandler}>
         <input
           name='text'
@@ -29,9 +30,11 @@ const CommentForm = (props) => {
           onChange={inputHandler}
           required
         />
-        <div className='Form-row'>
+        <div>
           {' '}
-          <button type='submit'>Comment</button>
+          <button type='submit'>
+            <i className='fas fa-paper-plane'></i>
+          </button>
         </div>
       </form>
     </div>
