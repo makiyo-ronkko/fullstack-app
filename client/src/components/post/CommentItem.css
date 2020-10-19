@@ -18,7 +18,8 @@
   font-weight: bolder;
 }
 
-.CommentItem-profile {
+.CommentItem-profile p {
+  font-size: 0.9rem;
 }
 
 .CommentItem-comment {
@@ -26,7 +27,7 @@
   flex-direction: row;
   margin-left: 1.5rem;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   width: 600px;
 }
 
