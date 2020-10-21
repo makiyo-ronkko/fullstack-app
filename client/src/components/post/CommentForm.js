@@ -5,17 +5,17 @@ import { addComment } from '../../actions/post';
 import './CommentForm.css';
 
 const CommentForm = (props) => {
-  const [text, settext] = useState('');
+  const [text, setText] = useState('');
   console.log(props);
 
   const inputHandler = (e) => {
-    settext(e.target.value);
+    setText(e.target.value);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     props.addComment(props.postId, { text });
-    settext('');
+    setText('');
     console.log({ text });
   };
 
