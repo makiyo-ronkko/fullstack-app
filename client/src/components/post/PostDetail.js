@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -16,8 +16,13 @@ const PostDetail = (props) => {
     date,
     likes,
     comments,
+    avatar,
     _id,
   } = props.post.post;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [props.loading]);
 
   console.log(props);
 
@@ -50,9 +55,7 @@ const PostDetail = (props) => {
       </div>
       <div className='PostDetail-header'>
         <div className='PostDetail-user'>
-          {props.auth.user && (
-            <img src={props.auth.user.avatar} alt={props.auth.user.name} />
-          )}
+          {avatar && name && <img src={avatar} alt={name} />}
           <Link to={`/profile/${user}`}>
             <h4>{name}</h4>
           </Link>
