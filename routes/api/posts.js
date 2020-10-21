@@ -37,6 +37,7 @@ router.post(
       const newPost = new Post({
         image: req.file.buffer.toString('base64'), // image from body
         name: user.name, // from database
+        avatar: user.avatar,
         caption: req.body.caption,
         hashtag: req.body.hashtag,
         user: req.user.id, // from token
