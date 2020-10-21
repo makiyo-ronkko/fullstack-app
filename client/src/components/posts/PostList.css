@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #1c47a2;
+  --secondary-color: #a21c8a;
+  --support-color: #f1e6ab;
+  --gray-color: #bfc0c1;
+  --dark-color: #050505;
+  --light-color: #fffefd;
+}
+
 .PostList {
   margin: 2rem 0;
   padding: 1rem;
@@ -11,16 +20,50 @@
 }
 
 .PostList h1 {
+  font-size: 2rem;
   margin: 0.8rem;
   text-transform: uppercase;
   text-align: center;
   padding-bottom: 0.4rem;
 }
 
+.PostList-search-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 0.5rem;
+}
+
+.PostList-search-bar i {
+  margin: 1rem 1rem 0 0;
+  color: var(--gray-color);
+}
+
+.PostList-search-bar input[type='text'] {
+  font: inherit;
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.1rem;
+  margin-top: 0.8rem;
+  background: rgba(228, 171, 171, 0.4);
+}
+
+input::placeholder {
+  color: var(--dark-color);
+}
+
 @media (max-width: 920px) {
   .PostList {
     display: flex;
     flex-direction: column;
+  }
+  .PostList h1 {
+    margin-top: 2rem;
   }
   .PostList-cards {
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

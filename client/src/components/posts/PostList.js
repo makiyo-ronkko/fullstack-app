@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import PostItem from './PostItem';
 import PostForm from './PostForm';
@@ -13,16 +13,66 @@ const PostList = (props) => {
   }, [props.fetchPosts, props.auth]);
 
   console.log(props);
+
+  const [formData, setFormData] = useState('');
+  const [filtered, setFiltered] = useState(props.post.posts);
+
+  console.log(filtered);
+
+  const inputHandler = (e) => {
+    setFormData(e.target.value);
+    let oldList = props.post.posts.map((post) => {
+      return {
+        hashtag: post.hashtag.toLowerCase(),
+        caption: post.caption,
+        image: post.image,
+        comments: post.comments,
+        likes: post.likes,
+        date: post.date,
+        name: post.name,
+        avatar: post.avatar,
+        user: post.user,
+        _id: post._id,
+      };
+    });
+    if (formData !== '') {
+      let newList = [];
+      setFormData(e.target.value);
+      newList = oldList.filter((post) =>
+        post.hashtag.includes(formData.toLowerCase())
+      );
+      setFiltered(newList);
+      console.log(newList);
+      console.log(filtered);
+    } else {
+      setFiltered(props.post.posts);
+    }
+  };
+
   return !props.auth && !props.post.posts ? (
     <div>Loading...</div>
   ) : (
     <div className='PostList'>
       <h1>Daily Art Sharing</h1>
+      <div className='PostList-search-bar'>
+        <i className='fas fa-search'></i>
+        <form>
+          <input
+            type='text'
+            name='search'
+            value={formData}
+            onChange={inputHandler}
+            placeholder='Hashtag search'
+          />
+        </form>
+      </div>
       <PostForm />
       <div className='PostList-cards'>
-        {props.post.posts.map((post) => (
-          <PostItem key={post._id} post={post} />
-        ))}
+        {!props.loading && formData === ''
+          ? props.post.posts.map((post) => (
+              <PostItem key={post._id} post={post} />
+            ))
+          : filtered.map((post) => <PostItem key={post._id} post={post} />)}
       </div>
     </div>
   );
