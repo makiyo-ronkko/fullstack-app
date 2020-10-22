@@ -15,6 +15,7 @@ const Profile = (props) => {
 
   useEffect(() => {
     props.fetchUserProfile();
+    window.scrollTo(0, 0);
   }, [props.fetchUserProfile]);
   console.log(profile);
 
