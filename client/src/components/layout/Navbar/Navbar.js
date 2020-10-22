@@ -2,22 +2,26 @@ import React, { Fragment, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../../actions/index';
+import { alert } from '../../../actions/alert';
 import PropTypes from 'prop-types';
 import './Navbar.css';
+import logo from '../../../img/logo.png';
 
 const Navbar = (props) => {
   // passing logout props, auth
 
   const [toggle, setToggle] = useState(false);
-  // const [fadeOut, setFadeOut] = useState(false);
 
   const openToggle = () => {
     setToggle(!toggle);
-    // setFadeOut(true);
     setTimeout(() => {
-      // setFadeOut(true);
       setToggle(toggle);
     }, 5000);
+  };
+
+  const logoutHandler = () => {
+    props.logout();
+    props.alert('You have logged out', 'blue');
   };
 
   const isAuthenticated = (
@@ -33,7 +37,6 @@ const Navbar = (props) => {
             <i className='fas fa-user' onClick={openToggle} />
           </div>
           {toggle && (
-            // <ul className={`${fadeOut && 'fadeout'}`}>
             <ul>
               <li>
                 <NavLink exact to='/profile'>
@@ -41,7 +44,7 @@ const Navbar = (props) => {
                 </NavLink>
               </li>
               <li>
-                <a onClick={props.logout} href='#!'>
+                <a onClick={logoutHandler} href='#!'>
                   <span>Logout</span>
                 </a>
               </li>
@@ -69,17 +72,16 @@ const Navbar = (props) => {
 
   return (
     <nav className='Navbar'>
-      <h1>
-        <NavLink
-          exact
-          to='/'
-          activeStyle={{
-            fontWeight: 'bolder',
-          }}
-        >
-          Main page
-        </NavLink>
-      </h1>
+      <NavLink
+        exact
+        to='/'
+        activeStyle={{
+          fontWeight: 'bolder',
+        }}
+      >
+        <img src={logo} className='logo' style={{ padding: '0 2rem 0 0;' }} />
+      </NavLink>
+
       {!props.loading && (
         <Fragment>
           {props.authenticated ? isAuthenticated : notAuthenticated}
@@ -92,6 +94,7 @@ const Navbar = (props) => {
 Navbar.prooTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
+  alert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -99,4 +102,4 @@ const mapStateToProps = (state) => ({
   loading: state.auth.loading,
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout, alert })(Navbar);
