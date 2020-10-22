@@ -20,7 +20,7 @@ const Signin = (props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [props.loading]);
+  }, [props.auth.loading]);
 
   const inputHandler = (e) =>
     setFormData({
@@ -35,7 +35,7 @@ const Signin = (props) => {
     props.alert('You have logged in', 'blue');
   };
 
-  if (props.authenticated) {
+  if (props.auth.authenticated && props.auth.user) {
     return <Redirect to='/gallery' />;
   }
 
@@ -89,12 +89,14 @@ const Signin = (props) => {
 
 Signin.propTypes = {
   signin: PropTypes.func.isRequired,
-  authenticated: PropTypes.bool,
+  // authenticated: PropTypes.bool,
+  auth: PropTypes.object.isRequired,
   alert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  authenticated: state.auth.authenticated,
+  // authenticated: state.auth.authenticated,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { signin, alert })(Signin);

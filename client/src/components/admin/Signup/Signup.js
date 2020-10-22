@@ -20,7 +20,7 @@ const Signup = (props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [props.loading]);
+  }, [props.auth.loading]);
 
   const inputHandler = (e) =>
     setFormData({
@@ -41,7 +41,7 @@ const Signup = (props) => {
   };
 
   // if authenticated, redirect
-  if (props.authenticated) {
+  if (props.auth.authenticated && props.auth.user) {
     return <Redirect to='/create-profile' />;
   }
 
@@ -119,11 +119,13 @@ const Signup = (props) => {
 Signup.propTypes = {
   register: PropTypes.func.isRequired,
   alert: PropTypes.func.isRequired,
-  authenticated: PropTypes.bool,
+  // authenticated: PropTypes.bool,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  authenticated: state.auth.authenticated,
+  // authenticated: state.auth.authenticated,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { register, alert })(Signup);
