@@ -108,14 +108,14 @@ router.get('/user/:user_id', async (req, res) => {
 // DELETE /profile: delete profile, user & posts
 router.delete('/', auth, async (req, res) => {
   try {
+    // Remove user posts
+    await AppPost.deleteMany({ user: req.user.id });
     // Remove profile
     // id with token { appuser: req.user.id } from 'appuser' model, private with auth middleware
     await AppProfile.findOneAndDelete({ appuser: req.user.id });
     // Remove user
     await AppUser.findOneAndDelete({ _id: req.user.id });
 
-    // Remove user posts
-    await AppPost.deleteMany({ appuser: req.user.id });
     res.json({ msg: 'User removed' });
   } catch (err) {
     console.error(err.msg);
