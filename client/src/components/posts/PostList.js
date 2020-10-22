@@ -49,7 +49,7 @@ const PostList = (props) => {
     }
   };
 
-  return !props.auth && !props.post.posts ? (
+  return !props.auth.user && !props.post.posts ? (
     <div>Loading...</div>
   ) : (
     <div className='PostList'>
@@ -62,7 +62,7 @@ const PostList = (props) => {
             name='search'
             value={formData}
             onChange={inputHandler}
-            placeholder='Hashtag search'
+            placeholder='Search hashtags'
           />
         </form>
       </div>
