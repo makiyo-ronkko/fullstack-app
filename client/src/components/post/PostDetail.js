@@ -61,6 +61,7 @@ const PostDetail = (props) => {
           </Link>
         </div>
       </div>
+      <hr />
       <div className='PostDetail-img'>
         <img src={`data:image/png;base64,${image}`} alt={name} />
       </div>
