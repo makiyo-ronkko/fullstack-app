@@ -45,6 +45,7 @@ const PostForm = (props) => {
           //   value={inputData.image}
           onChange={inputFileHandler}
           accept='.jpg, .png'
+          required
         />
         <input
           type='text'
@@ -52,6 +53,7 @@ const PostForm = (props) => {
           placeholder='caption'
           value={inputData.caption}
           onChange={inputHandler}
+          required
         />
         <input
           type='text'
@@ -59,6 +61,7 @@ const PostForm = (props) => {
           placeholder='#hashtag'
           value={inputData.hashtag}
           onChange={inputHandler}
+          required
         />
         <div className='Form-btn'>
           <button type='submit'>Post</button>
