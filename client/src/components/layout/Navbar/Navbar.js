@@ -12,6 +12,7 @@ const Navbar = (props) => {
 
   const [toggle, setToggle] = useState(false);
 
+  console.log(props);
   const openToggle = () => {
     setToggle(!toggle);
     setTimeout(() => {
@@ -34,7 +35,15 @@ const Navbar = (props) => {
         </li>
         <li className='Navbar-bars'>
           <div className='burger'>
-            <i className='fas fa-user' onClick={openToggle} />
+            {props.auth.user && (
+              <img
+                src={props.auth.user.avatar}
+                alt={props.auth.user.name}
+                className='Navbar-bars-profile-avatar'
+                onClick={openToggle}
+                style={{ marginBottom: '0.6rem', padding: '0 0 0.6rem 0' }}
+              />
+            )}
           </div>
           {toggle && (
             <ul>
@@ -79,12 +88,12 @@ const Navbar = (props) => {
           fontWeight: 'bolder',
         }}
       >
-        <img src={logo} className='logo' style={{ padding: '0 2rem 0 0;' }} />
+        <img src={logo} className='logo' style={{ padding: '0 2rem 0 0' }} />
       </NavLink>
 
-      {!props.loading && (
+      {!props.auth.loading && (
         <Fragment>
-          {props.authenticated ? isAuthenticated : notAuthenticated}
+          {props.auth.authenticated ? isAuthenticated : notAuthenticated}
         </Fragment>
       )}
     </nav>
@@ -98,8 +107,8 @@ Navbar.prooTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  authenticated: state.auth.authenticated,
-  loading: state.auth.loading,
+  auth: state.auth,
+  // loading: state.auth.loading,
 });
 
 export default connect(mapStateToProps, { logout, alert })(Navbar);
