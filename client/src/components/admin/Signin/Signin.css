@@ -16,6 +16,7 @@
 .Form {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   background: rgb(240, 237, 237, 0.8);
   width: 20rem;
   padding: 2rem;
