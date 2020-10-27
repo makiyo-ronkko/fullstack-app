@@ -10,11 +10,11 @@
   border-radius: 0.2rem;
   background: var(--light-color);
   color: var(--dark-color);
-  border: 1px solid var(--dark-color);
+  border: 1px solid var(--gray-color);
 }
 
 .Profile h1 {
-  margin: 0.4rem;
+  margin: 0.4rem 0.4rem 1rem 0.4rem;
   text-transform: uppercase;
   text-align: center;
 }
@@ -23,7 +23,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 50%;
+  border-radius: 0.2rem;
   width: 50%;
 }
 
@@ -37,7 +37,7 @@
   width: 18rem;
   height: 1px;
   border: 0;
-  border-top: 2px dotted var(--dark-color);
+  border-top: 1px solid var(--gray-color);
   margin: 1rem 0;
   padding: 0;
 }
@@ -160,9 +160,23 @@
   cursor: pointer;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 640px) {
+  .Profile p {
+    margin: 0 1rem;
+  }
+  .Profile hr {
+    width: 16rem;
+  }
+}
+@media (max-width: 740px) {
   .Profile {
-    padding-top: 3rem 0;
+    padding-top: 0;
     border: none;
+  }
+}
+
+@media (min-width: 1300px) {
+  .Profile {
+    margin-top: 8rem;
   }
 }

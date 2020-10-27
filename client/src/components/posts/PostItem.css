@@ -20,7 +20,7 @@
 .PostItem-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.3rem;
+  margin: 0.3rem;
 }
 
 .PostItem-user {
@@ -191,6 +191,7 @@
 @media (max-width: 920px) {
   .PostItem {
     border-radius: 0;
+    padding: 0.5rem 0;
   }
   .PostItem-img img {
     padding: 0;

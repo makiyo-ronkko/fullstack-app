@@ -29,6 +29,7 @@
   height: 100%;
   width: 100%;
   margin: auto;
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,4 +76,28 @@
 .Home-register-text {
   color: var(--primary-color);
   font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  .Home {
+    position: relative;
+    background: url('../../../img/background.png') no-repeat center center/cover;
+    height: 150vh;
+  }
+  .Home-container {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 1300px) {
+  .Home {
+    position: relative;
+    background: url('../../../img/background.png') no-repeat center center/cover;
+    height: 120vh;
+  }
+  .Home-container {
+    margin: 0;
+    padding: 0;
+  }
 }

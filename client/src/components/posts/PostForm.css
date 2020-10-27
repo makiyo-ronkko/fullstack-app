@@ -18,12 +18,14 @@
 .PostForm h3 {
   text-transform: uppercase;
   color: var(--primary-color);
+  font-weight: bolder;
 }
 
 .Form-btn {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1rem;
 }
 
 .PostForm button {
