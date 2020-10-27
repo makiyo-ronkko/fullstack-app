@@ -34,7 +34,7 @@
 
 .Profile hr {
   display: block;
-  width: 18rem;
+  min-width: 18rem;
   height: 1px;
   border: 0;
   border-top: 1px solid var(--gray-color);
