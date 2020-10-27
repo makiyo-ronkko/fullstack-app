@@ -10,12 +10,18 @@ module.exports = function (req, res, next) {
   }
   try {
     // Decode encrypted token
-    const decoded = jwt.verify(token, config.get('jwtSecret'));
-    // Request object assign to user and assign the value to
-    // user payload (user id)
-    req.user = decoded.user;
-    next();
+    jwt.verify(token, config.get('jwtSecret'), (error, decoded) => {
+      if (error) {
+        return res.status(401).json({ msg: 'Token is not valid' });
+      } else {
+        // Request object assign to user and assign the value to
+        // user payload (user id)
+        req.user = decoded.user;
+        next();
+      }
+    });
   } catch (err) {
-    res.status(401).json({ msg: 'Token is invalid.' });
+    console.error('something wrong with auth middleware');
+    res.status(500).json({ msg: 'Server Error' });
   }
 };
