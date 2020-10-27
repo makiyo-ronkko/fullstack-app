@@ -32,7 +32,7 @@ const PostForm = (props) => {
       console.log(value);
     }
     console.log(inputData.image);
-    setInputData('');
+    setInputData({ image: null, caption: '', hashtag: '' });
   };
 
   return (
