@@ -45,10 +45,6 @@ Create a multi-cloud database with [MongoDB Atlas](https://www.mongodb.com/cloud
 
 ![fullstackapp](./img/login.png?raw=true)
 
-### Profile Admin View
-
-![fullstackapp](./img/profileedit.png?raw=true)
-
 ### Posts
 
 ![fullstackapp](./img/posts.png?raw=true)
