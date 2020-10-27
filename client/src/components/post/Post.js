@@ -11,8 +11,6 @@ const Post = (props) => {
     props.fetchPost(props.match.params.id);
   }, [props.fetchPost]);
 
-  console.log(props);
-
   return props.loading || props.post === null ? (
     <div>Loading...</div>
   ) : (

@@ -6,7 +6,6 @@ import './CommentForm.css';
 
 const CommentForm = (props) => {
   const [text, setText] = useState('');
-  console.log(props);
 
   const inputHandler = (e) => {
     setText(e.target.value);
@@ -16,7 +15,6 @@ const CommentForm = (props) => {
     e.preventDefault();
     props.addComment(props.postId, { text });
     setText('');
-    console.log({ text });
   };
 
   return (

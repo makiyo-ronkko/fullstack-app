@@ -16,10 +16,6 @@ const ProfileView = (props) => {
     window.scrollTo(0, 0);
   }, [props.fetchProfileById, props.fetchPosts, props.match.params.id]);
 
-  console.log(props);
-  console.log(posts);
-  console.log(profile);
-
   return (
     <div className='container'>
       {profile !== null && (

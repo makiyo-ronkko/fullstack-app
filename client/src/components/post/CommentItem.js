@@ -7,8 +7,6 @@ import { deleteComment } from '../../actions/post';
 import './CommentItem.css';
 
 const CommentItem = (props) => {
-  console.log(props);
-
   const submitHandler = () =>
     props.deleteComment(props.postId, props.comment._id);
 

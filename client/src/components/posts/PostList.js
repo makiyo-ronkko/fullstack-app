@@ -12,12 +12,8 @@ const PostList = (props) => {
     window.scrollTo(0, 0);
   }, [props.fetchPosts, props.auth]);
 
-  console.log(props);
-
   const [formData, setFormData] = useState('');
   const [filtered, setFiltered] = useState(props.post.posts);
-
-  console.log(filtered);
 
   const inputHandler = (e) => {
     setFormData(e.target.value);
@@ -42,8 +38,6 @@ const PostList = (props) => {
         post.hashtag.includes(formData.toLowerCase())
       );
       setFiltered(newList);
-      console.log(newList);
-      console.log(filtered);
     } else {
       setFiltered(props.post.posts);
     }

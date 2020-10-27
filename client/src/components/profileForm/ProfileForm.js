@@ -26,8 +26,6 @@ const ProfileForm = (props) => {
     window.scrollTo(0, 0);
   }, [profile, loading, props.fetchUserProfile]);
 
-  console.log(props);
-
   const inputHandler = (e) =>
     setData({ ...data, [e.target.name]: e.target.value });
   const submitHandler = (e) => {

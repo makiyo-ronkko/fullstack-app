@@ -129,7 +129,6 @@ export const addComment = (postId, data) => async (dispatch) => {
       `/posts/comment/${postId}`,
       data
     );
-    console.log('action', response.data, data);
     dispatch({
       type: ADD_COMMENT,
       payload: response.data,

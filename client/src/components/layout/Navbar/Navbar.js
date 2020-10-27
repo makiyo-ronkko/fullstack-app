@@ -12,7 +12,6 @@ const Navbar = (props) => {
 
   const [toggle, setToggle] = useState(false);
 
-  console.log(props);
   const openToggle = () => {
     setToggle(!toggle);
     setTimeout(() => {

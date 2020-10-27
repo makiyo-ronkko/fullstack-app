@@ -59,9 +59,7 @@ export const register = (name, email, password) => async (dispatch) => {
     dispatch(authUser());
   } catch (err) {
     const errors = err.response.data.errors;
-    // console.log(errors);
     if (errors) {
-      //console.log('Error', err.message);
       errors.forEach((error) => dispatch(alert(error.msg, 'red')));
     }
     dispatch({
@@ -90,7 +88,6 @@ export const signin = (email, password) => async (dispatch) => {
     dispatch(authUser());
   } catch (err) {
     const errors = err.response.data.errors;
-    // console.log(errors);
     if (errors) {
       errors.forEach((error) => dispatch(alert(error.msg, 'red')));
     }

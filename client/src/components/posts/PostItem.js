@@ -19,7 +19,6 @@ const PostItem = (props) => {
     comments,
     avatar,
   } = props.post;
-  console.log(props);
 
   const [showDelete, setShowDelete] = useState(false);
 

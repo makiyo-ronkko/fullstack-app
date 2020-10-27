@@ -28,10 +28,9 @@ const PostForm = (props) => {
     // props.addPost(inputData);
     props.addPost(formData);
     // Display the values
-    for (var value of formData.values()) {
-      console.log(value);
-    }
-    console.log(inputData.image);
+    // for (var value of formData.values()) {
+    //   console.log(value);
+    // }
     setInputData({ image: null, caption: '', hashtag: '' });
   };
 

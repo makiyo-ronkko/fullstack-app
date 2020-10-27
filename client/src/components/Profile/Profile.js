@@ -17,10 +17,8 @@ const Profile = (props) => {
     props.fetchUserProfile();
     window.scrollTo(0, 0);
   }, [props.fetchUserProfile]);
-  console.log(profile);
 
   const renderAuthenticatedUserInfo = () => {
-    console.log(user);
     if (user !== null) {
       return (
         <>

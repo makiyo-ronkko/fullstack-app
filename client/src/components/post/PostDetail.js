@@ -24,8 +24,6 @@ const PostDetail = (props) => {
     window.scrollTo(0, 0);
   }, [props.loading]);
 
-  console.log(props);
-
   const fasColor = () => {
     if (likes.length >= 5) {
       return '#ff6600';

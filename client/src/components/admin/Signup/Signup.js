@@ -31,7 +31,6 @@ const Signup = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (formData.password !== formData.password2) {
-      // console.log('Password do not match!');
       props.alert('Passwords unmatched. Please try again.', 'red');
     } else {
       props.register(formData.name, formData.email, formData.password);
