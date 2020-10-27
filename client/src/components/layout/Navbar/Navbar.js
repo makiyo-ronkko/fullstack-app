@@ -41,7 +41,7 @@ const Navbar = (props) => {
                 alt={props.auth.user.name}
                 className='Navbar-bars-profile-avatar'
                 onClick={openToggle}
-                style={{ marginBottom: '0.6rem', padding: '0 0 0.6rem 0' }}
+                style={{ marginBottom: '0.6rem', padding: '0' }}
               />
             )}
           </div>
@@ -53,7 +53,7 @@ const Navbar = (props) => {
                 </NavLink>
               </li>
               <li>
-                <a onClick={logoutHandler} href='#!'>
+                <a onClick={logoutHandler} href='/'>
                   <span>Logout</span>
                 </a>
               </li>
@@ -80,7 +80,12 @@ const Navbar = (props) => {
   );
 
   return (
-    <nav className='Navbar'>
+    <nav
+      className='Navbar'
+      style={
+        !props.auth.authenticated ? { padding: '0' } : { padding: '0 2rem 0 0' }
+      }
+    >
       <NavLink
         exact
         to='/'
