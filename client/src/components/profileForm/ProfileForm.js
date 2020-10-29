@@ -8,7 +8,7 @@ import './ProfileForm.css';
 const ProfileForm = (props) => {
   const { profile, loading } = props.profile;
 
-  const [data, setData] = useState({
+  const [formData, setFormData] = useState({
     intro: '',
     website: '',
     location: '',
@@ -17,7 +17,7 @@ const ProfileForm = (props) => {
   useEffect(() => {
     if (!profile) props.fetchUserProfile();
     if (!loading && profile) {
-      setData({
+      setFormData({
         intro: !profile.intro ? '' : profile.intro,
         website: !profile.website ? '' : profile.website,
         location: !profile.location ? '' : profile.location,
@@ -27,10 +27,10 @@ const ProfileForm = (props) => {
   }, [profile, loading, props.fetchUserProfile]);
 
   const inputHandler = (e) =>
-    setData({ ...data, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   const submitHandler = (e) => {
     e.preventDefault();
-    props.createProfile(data, props.history, profile ? true : false);
+    props.createProfile(formData, props.history, profile ? true : false);
   };
 
   return (
@@ -47,7 +47,7 @@ const ProfileForm = (props) => {
             placeholder="I'm a photographer"
             name='intro'
             onChange={inputHandler}
-            value={data.intro}
+            value={formData.intro}
           />
           <hr />
 
@@ -58,7 +58,7 @@ const ProfileForm = (props) => {
             // pattern='https//.*'
             name='website'
             onChange={inputHandler}
-            value={data.website}
+            value={formData.website}
           />
           <hr />
 
@@ -68,7 +68,7 @@ const ProfileForm = (props) => {
             placeholder='location'
             name='location'
             onChange={inputHandler}
-            value={data.location}
+            value={formData.location}
           />
           <hr />
 
