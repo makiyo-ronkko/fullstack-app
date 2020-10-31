@@ -1,165 +1,180 @@
 :root {
-  --primary-color: #1c47a2;
-  --secondary-color: #a21c8a;
-  --support-color: #f1e6ab;
-  --gray-color: #bfc0c1;
-  --dark-color: #050505;
-  --light-color: #fffefd;
+	--primary-color: #1c47a2;
+	--secondary-color: #a21c8a;
+	--support-color: #f1e6ab;
+	--gray-color: #bfc0c1;
+	--dark-color: #050505;
+	--light-color: #fffefd;
 }
 
 .PostDetail {
-  display: flex;
-  flex-direction: column;
-  border-radius: 0.2rem;
-  padding: 1rem;
-  box-shadow: 0 1px 1px rgba(183, 184, 180, 0.15);
-  margin: 2rem 0;
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.2rem;
+	padding: 1rem;
+	box-shadow: 0 1px 1px rgba(183, 184, 180, 0.15);
+	margin: 2rem 0;
 }
 
 .PostDetail .PostDetail-content hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 0.5px solid rgba(238, 235, 234, 0.6);
-  margin: 1rem 0;
-  padding: 0;
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 0.5px solid rgba(238, 235, 234, 0.6);
+	margin: 1rem 0;
+	padding: 0;
 }
 
 .PostDetail-header {
-  display: flex;
-  margin: 0 1rem;
+	display: flex;
+	margin: 0 1rem;
 }
 
 .PostDetail-user {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 .PostDetail-user a {
-  text-decoration: none;
-  color: var(--primary-color);
-  display: flex;
-  align-items: center;
+	text-decoration: none;
+	color: var(--primary-color);
+	display: flex;
+	align-items: center;
 }
 
 .PostDetail-user img {
-  width: 20%;
-  height: auto;
-  margin: auto 0;
-  padding: 0 0.4rem 0.2rem 0;
-  border-radius: 0;
+	width: 20%;
+	height: auto;
+	margin: auto 0;
+	padding: 0 0.4rem 0.2rem 0;
+	border-radius: 0;
 }
 
 .PostDetail-user img:hover {
-  cursor: pointer;
-  background-color: none;
+	cursor: pointer;
+	background-color: none;
 }
 
 .PostDetail-img img {
-  display: block;
-  padding: 0.2rem;
-  border-radius: 0.3rem;
-  border: 0;
-  width: 40%;
-  height: auto;
-  margin: auto;
+	display: block;
+	padding: 0.2rem;
+	border-radius: 0.3rem;
+	border: 0;
+	width: 40%;
+	height: auto;
+	margin: auto;
 }
 .PostDetail-img img:hover {
-  cursor: pointer;
-  background-color: rgba(185, 113, 91, 0.4);
+	cursor: pointer;
+	background-color: rgba(185, 113, 91, 0.4);
 }
 
 .PostDetail-img-modal-wrapper {
-  background: var(--dark-color);
-  height: 100%;
+	background: var(--dark-color);
+	height: 100%;
 }
 
 .PostDetail-img-modal {
-  /* max-height: 100%; */
-  height: auto;
-  width: auto;
-  position: fixed;
-  top: -100%;
-  bottom: -100%;
-  left: -100%;
-  right: -100%;
-  margin: auto;
-  border-radius: 0.3rem;
-  overflow: auto;
-  background: var(--dark-color);
-  z-index: 9999;
+	/* max-height: 100%; */
+	height: auto;
+	width: auto;
+	position: fixed;
+	top: -100%;
+	bottom: -100%;
+	left: -100%;
+	right: -100%;
+	margin: auto;
+	border-radius: 0.3rem;
+	overflow: auto;
+	background: var(--dark-color);
+	z-index: 9999;
 }
 
 .PostDetail-img-modal:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .PostDetail-content {
-  display: flex;
-  flex-direction: column;
-  padding: 0.2rem;
-  margin-bottom: 0.3rem;
+	display: flex;
+	flex-direction: column;
+	padding: 0.2rem;
+	margin-bottom: 0.3rem;
 }
 
 .PostDetail-content p {
-  padding: 0.4rem 0 0 0.4rem;
+	padding: 0.4rem 0 0 0.4rem;
 }
 
 .PostDetail-content .likes {
-  padding: 0.4rem;
+	padding: 0.4rem;
 }
 
 .PostDetail-content .hashtag {
-  color: var(--primary-color);
+	color: var(--primary-color);
 }
 
 .PostDetail-content .date {
-  color: var(--gray-color);
+	color: var(--gray-color);
 }
 
 .Profile-FormLink {
-  font: inherit;
-  font-size: 1.2rem;
-  width: 10rem;
-  padding: 0.5rem;
-  border-radius: 0.2rem;
-  font-weight: bolder;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--secondary-color);
-  border: none;
-  outline: none;
-  text-align: center;
+	font: inherit;
+	font-size: 1.2rem;
+	width: 10rem;
+	padding: 0.5rem;
+	border-radius: 0.2rem;
+	font-weight: bolder;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--secondary-color);
+	border: none;
+	outline: none;
+	text-align: center;
 }
 
 .Profile-Link:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
-@media (max-width: 740px) {
-  .PostDetail {
-    border-radius: 0;
-    padding-top: 2rem;
-    margin: 4rem 0 0 0;
-  }
-  .PostDetail-user img {
-    width: 15%;
-  }
-  .PostDetail-img img {
-    width: 60%;
-  }
+@media (max-width: 640px) {
+	.PostDetail {
+		border-radius: 0;
+		padding-top: 2rem;
+		margin: 4rem 0 0 0;
+	}
+	.PostDetail-user img {
+		width: 15%;
+	}
+	.PostDetail-img img {
+		width: 60%;
+	}
+}
+
+@media (max-width: 812px) {
+	.PostDetail {
+		border-radius: 0;
+		padding-top: 4rem;
+		margin: 4rem 0 0 0;
+	}
+}
+@media (max-width: 1024px) {
+	.PostDetail {
+		border-radius: 0;
+		padding-top: 6rem;
+		margin: 6rem 0 0 0;
+	}
 }
 
 @media only screen and (min-widh: 741px) and (max-width: 1366px) {
-  .PostDetail {
-    border-radius: 0;
-    margin: 4rem 0 0 0;
-    padding-top: 4rem;
-  }
-  .PostDetail-user img {
-    width: 15%;
-  }
-  .PostDetail-img img {
-    width: 40%;
-  }
+	.PostDetail {
+		border-radius: 0;
+		margin: 4rem 0 0 0;
+		padding-top: 4rem;
+	}
+	.PostDetail-user img {
+		width: 15%;
+	}
+	.PostDetail-img img {
+		width: 40%;
+	}
 }

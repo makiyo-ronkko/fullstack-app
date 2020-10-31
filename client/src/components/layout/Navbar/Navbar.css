@@ -1,167 +1,167 @@
 :root {
-  --primary-color: #1c47a2;
-  --secondary-color: ##a21c8a;
-  --support-color: #f1e6ab;
-  --gray-color: #bfc0c1;
-  --dark-color: #050505;
-  --light-color: #fffefd;
+	--primary-color: #1c47a2;
+	--secondary-color: ##a21c8a;
+	--support-color: #f1e6ab;
+	--gray-color: #bfc0c1;
+	--dark-color: #050505;
+	--light-color: #fffefd;
 }
 
 .Navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 13vh;
-  background: var(--light-color);
-  position: fixed;
-  z-index: 9999;
-  width: 100%;
-  top: 0;
-  border-bottom: solid 1px var(--light-color);
-  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 13vh;
+	background: var(--light-color);
+	position: fixed;
+	z-index: 9999;
+	width: 100%;
+	top: 0;
+	border-bottom: solid 1px var(--light-color);
+	box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
 .Navbar img {
-  height: 15vh;
-  margin: 0;
-  padding: 0;
+	height: 15vh;
+	margin: 0;
+	padding: 0;
 }
 
 .Navbar ul {
-  display: flex;
-  text-align: center;
-  list-style: none;
-  padding: 0 5px 0 0;
-  margin: 0 10px;
+	display: flex;
+	text-align: center;
+	list-style: none;
+	padding: 0 5px 0 0;
+	margin: 0 10px;
 }
 
 .Navbar a {
-  color: var(--primary-color);
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0 2rem;
+	color: var(--primary-color);
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1.2rem;
+	font-weight: bold;
+	cursor: pointer;
+	padding: 0 2rem;
 }
 
 .Navbar a:hover {
-  color: var(--gray-color);
+	color: var(--gray-color);
 }
 
 .burger {
-  position: absolute;
-  color: var(--primary-color);
+	position: absolute;
+	color: var(--primary-color);
 }
 
 .burger:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .Navbar .Navbar-bars-profile-avatar {
-  display: flex;
-  width: 60%;
-  height: auto;
-  border-radius: 50%;
-  position: relative;
-  padding: 0.6rem;
+	display: flex;
+	width: 50%;
+	height: auto;
+	border-radius: 50%;
+	position: relative;
+	padding: 0.6rem;
 }
 
 .Navbar .Navbar-bars-profile-avatar:hover {
-  color: var(--gray-color);
+	color: var(--gray-color);
 }
 
 .Navbar .Navbar-bars ul {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  right: 0;
-  top: 7rem;
-  justify-content: space-around;
-  background-color: rgb(245, 197, 205, 0.2);
-  border-radius: 0.2rem;
-  animation: slide-in 1.5s ease-out;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	right: 0;
+	top: 7rem;
+	justify-content: space-around;
+	background-color: rgb(245, 197, 205, 0.2);
+	border-radius: 0.2rem;
+	animation: slide-in 1.5s ease-out;
 }
 
 @keyframes slide-in {
-  0% {
-    top: -50px;
-  }
-  40% {
-    top: 7rem;
-  }
-  70% {
-    top: 7rem;
-  }
-  100% {
-    top: 7rem;
-  }
+	0% {
+		top: -50px;
+	}
+	40% {
+		top: 7rem;
+	}
+	70% {
+		top: 7rem;
+	}
+	100% {
+		top: 7rem;
+	}
 }
 
 .fade-out {
-  animation: fadeOut 1s ease-in;
+	animation: fadeOut 1s ease-in;
 }
 @keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 }
 
 .Navbar .Navbar-bars ul:hover {
-  transition-delay: 0s;
+	transition-delay: 0s;
 }
 
 .Navbar .Navbar-bars li {
-  padding: 0.3rem;
+	padding: 0.3rem;
 }
 
 .Navbar .Navbar-bars a {
-  font-size: 1rem;
+	font-size: 1rem;
 }
 
 .Navbar-bars a:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
-@media (max-width: px) {
-  .Navbar {
-    display: block;
-    text-align: center;
-    height: 23vh;
-    padding: 0;
-  }
+@media (max-width: 900px) {
+	.Navbar {
+		/* display: block; */
+		text-align: center;
+		height: 23vh;
+		padding: 0;
+	}
 
-  .Navbar a {
-    padding: 0.6rem;
-  }
+	.Navbar a {
+		padding: 0.6rem;
+	}
 
-  .Navbar ul {
-    justify-content: space-around;
-  }
+	.Navbar ul {
+		justify-content: space-around;
+	}
 
-  .Navbar .Navbar-bars-profile-avatar {
-    padding: 1rem;
-  }
+	.Navbar .Navbar-bars-profile-avatar {
+		padding: 1rem;
+	}
 
-  .Navbar .Navbar-bars ul {
-    right: 0;
-    top: 9rem;
-  }
-  @keyframes slide-in {
-    0% {
-      top: -50px;
-    }
-    40% {
-      top: 9rem;
-    }
-    70% {
-      top: 9rem;
-    }
-    100% {
-      top: 9rem;
-    }
-  }
+	.Navbar .Navbar-bars ul {
+		right: 0;
+		top: 9rem;
+	}
+	@keyframes slide-in {
+		0% {
+			top: -50px;
+		}
+		40% {
+			top: 9rem;
+		}
+		70% {
+			top: 9rem;
+		}
+		100% {
+			top: 9rem;
+		}
+	}
 }

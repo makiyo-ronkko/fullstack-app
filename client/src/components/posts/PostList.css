@@ -1,81 +1,99 @@
 :root {
-  --primary-color: #1c47a2;
-  --secondary-color: #a21c8a;
-  --support-color: #f1e6ab;
-  --gray-color: #bfc0c1;
-  --dark-color: #050505;
-  --light-color: #fffefd;
+	--primary-color: #1c47a2;
+	--secondary-color: #a21c8a;
+	--support-color: #f1e6ab;
+	--gray-color: #bfc0c1;
+	--dark-color: #050505;
+	--light-color: #fffefd;
 }
 
 .PostList {
-  margin: 2rem 0;
-  padding: 1rem;
+	margin: 2rem 0;
+	padding: 1rem;
 }
 
 .PostList-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  grid-auto-rows: minmax(360px, auto);
-  grid-gap: 2rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+	grid-auto-rows: minmax(360px, auto);
+	grid-gap: 2rem;
 }
 
 .PostList h1 {
-  font-size: 2rem;
-  margin: 0.8rem;
-  text-transform: uppercase;
-  text-align: center;
-  padding-bottom: 0.4rem;
+	font-size: 2rem;
+	margin: 0.8rem;
+	text-transform: uppercase;
+	text-align: center;
+	padding-bottom: 0.4rem;
 }
 
 .PostList-search-bar {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  padding: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	padding: 0.5rem;
 }
 
 .PostList-search-bar i {
-  margin: 1rem 1rem 0 0;
-  color: var(--gray-color);
+	margin: 1rem 1rem 0 0;
+	color: var(--gray-color);
 }
 
 .PostList-search-bar input[type='text'] {
-  font: inherit;
-  display: block;
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 0.1rem;
-  margin-top: 0.8rem;
-  background: rgba(228, 171, 171, 0.4);
+	font: inherit;
+	display: block;
+	width: 100%;
+	padding: 0.5rem;
+	font-size: 1rem;
+	border: none;
+	border-radius: 0.1rem;
+	margin-top: 0.8rem;
+	background: rgba(228, 171, 171, 0.4);
 }
 
 .PostList-search-bar input::placeholder {
-  color: var(--dark-color);
-}
-
-@media only screen and (min-width: 1024px) and (min-width: 1366px) {
-  .PostList {
-    display: flex;
-    flex-direction: column;
-    margin-top: 4rem;
-    padding-top: 4rem;
-  }
-  /* .PostList-cards {
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    grid-auto-rows: minmax(320px, auto);
-  } */
+	color: var(--dark-color);
 }
 
 @media (max-width: 640px) {
-  .PostList {
-    padding: 4rem 0;
-    margin-top: 4rem;
-  }
+	.PostList {
+		padding: 4rem 0;
+		margin-top: 4rem;
+	}
+	.PostList-cards {
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		grid-auto-rows: minmax(280px, auto);
+	}
 }
+
+@media (max-width: 1024px) {
+	.PostList {
+		padding: 5rem 0;
+		margin-top: 5rem;
+	}
+}
+
+@media (max-width: 1096px) {
+	.PostList {
+		padding: 6rem 0;
+		margin-top: 6rem;
+	}
+}
+/* @media only screen and (min-width: 1024px) and (min-width: 1366px) { */
+/* @media (max-width: 1366px) {
+	.PostList {
+		display: flex;
+		flex-direction: column;
+		margin-top: 4rem;
+		padding-top: 4rem;
+	}
+	.PostList-cards {
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		grid-auto-rows: minmax(320px, auto);
+	}
+} */
 /* 
 @media (min-width: 649px) and (max-width: 700px) {
   .PostList {
