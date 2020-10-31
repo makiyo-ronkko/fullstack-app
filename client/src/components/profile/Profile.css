@@ -1,0 +1,182 @@
+.Profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 40rem;
+  min-height: 50rem;
+  margin: auto;
+  margin-top: 1.5rem;
+  padding-top: 2rem;
+  border-radius: 0.2rem;
+  background: var(--light-color);
+  color: var(--dark-color);
+  border: 1px solid var(--gray-color);
+}
+
+.Profile h1 {
+  margin: 0.4rem 0.4rem 1rem 0.4rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.Profile img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.2rem;
+  width: 50%;
+}
+
+.Profile p {
+  margin: 0.2rem;
+  padding-top: 0.8rem;
+}
+
+.Profile hr {
+  display: block;
+  min-width: 18rem;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--gray-color);
+  margin: 1rem 0;
+  padding: 0;
+}
+
+.Profile-Link {
+  font: inherit;
+  width: 10rem;
+  padding: 0.5rem;
+  margin: 0.8rem;
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: var(--secondary-color);
+  color: var(--light-color);
+  border: none;
+  outline: none;
+  text-decoration: none;
+  text-align: center;
+}
+
+.Profile-Link:hover {
+  cursor: pointer;
+}
+
+.Profile button {
+  font: inherit;
+  width: 10rem;
+  padding: 0.5rem;
+  margin: 0.6rem;
+  border-radius: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--dark-color);
+  border: none;
+  outline: none;
+  text-decoration: none;
+  text-align: center;
+}
+
+.Profile button:hover {
+  cursor: pointer;
+}
+
+.Modal-delete {
+  position: fixed;
+  z-index: 9999;
+  padding: 0.5em;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #fffafa;
+  background-color: var(--gray-color);
+}
+
+.Modal-content {
+  background-color: #fefefe;
+  margin: 50px auto auto auto;
+  padding: 20px;
+  border: solid 1px var(--dark-color);
+  width: 90%;
+  height: auto;
+  word-break: break-word;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.cancelbtn {
+  font: inherit;
+  width: 10rem;
+  padding: 0.5rem;
+  margin: 1.2rem;
+  border-radius: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  border: none;
+  outline: none;
+  text-decoration: none;
+  text-align: center;
+}
+
+.deletebtn {
+  font: inherit;
+  width: 10rem;
+  padding: 0.5rem;
+  margin: 1.2rem;
+  border-radius: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  border: none;
+  text-decoration: none;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--dark-color);
+}
+
+.close:hover,
+.close:focus {
+  color: var(--light-color);
+  cursor: pointer;
+}
+
+.cancelbtn:hover,
+.deletebtn:hover {
+  color: var(--dark-color);
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .Profile p {
+    margin: 0 1rem;
+  }
+  .Profile hr {
+    width: 16rem;
+  }
+}
+@media (max-width: 740px) {
+  .Profile {
+    padding-top: 0;
+    border: none;
+  }
+}
+
+@media (min-width: 1300px) {
+  .Profile {
+    margin-top: 8rem;
+  }
+}
