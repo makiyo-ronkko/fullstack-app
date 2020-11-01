@@ -4,6 +4,8 @@
 
 "Daily Art Sharing" is a social media app where people can share arts and pictures daily and get ideas and inspiration from peer artists. App is created with Backend: [Mongo DB](https://github.com/Automattic/mongoose), [Express](https://github.com/expressjs/express) and Frontend: [React](https://github.com/facebook/react), [Redux](https://github.com/reduxjs/redux). Design with CSS. Visual assets with [Adobe Spark](https://spark.adobe.com/sp/).
 
+### Demo https://dailyartsharing.herokuapp.com
+
 ## Features
 
 Main functionalities: CRUD
