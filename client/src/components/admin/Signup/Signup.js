@@ -63,9 +63,7 @@ const Signup = (props) => {
 									value={formData.name}
 								/>
 							</div>
-							{submitted && !formData.name && (
-								<p>Name is required</p>
-							)}
+							{submitted && !formData.name && <p>Name is required</p>}
 
 							<div className='Form-row'>
 								<input
@@ -76,9 +74,7 @@ const Signup = (props) => {
 									value={formData.email}
 								/>
 							</div>
-							{submitted && !formData.email && (
-								<p>Email is required</p>
-							)}
+							{submitted && !formData.email && <p>Email is required</p>}
 
 							<div className='Form-row'>
 								<input
@@ -89,9 +85,7 @@ const Signup = (props) => {
 									value={formData.password}
 								/>
 							</div>
-							{submitted && !formData.password && (
-								<p>Password is required</p>
-							)}
+							{submitted && !formData.password && <p>Password is required</p>}
 
 							<div className='Form-row'>
 								<input
@@ -102,9 +96,7 @@ const Signup = (props) => {
 									value={formData.password2}
 								/>
 							</div>
-							{submitted && !formData.password2 && (
-								<p>Confirm your password</p>
-							)}
+							{submitted && !formData.password2 && <p>Confirm your password</p>}
 
 							<div className='Form-row'>
 								<button type='submit'>Register</button>

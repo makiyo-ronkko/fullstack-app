@@ -1,108 +1,108 @@
 :root {
-  --primary-color: #1c47a2;
-  --secondary-color: #a21c8a;
-  --support-color: #f1e6ab;
-  --gray-color: #bfc0c1;
-  --dark-color: #050505;
-  --light-color: #fffefd;
+	--primary-color: #1c47a2;
+	--secondary-color: #a21c8a;
+	--support-color: #f1e6ab;
+	--gray-color: #bfc0c1;
+	--dark-color: #050505;
+	--light-color: #fffefd;
 }
 
 .ProfileForm {
-  display: flex;
-  flex-direction: column;
-  background: rgb(240, 237, 237, 0.8);
-  width: 40rem;
-  padding: 2rem;
-  border-radius: 0.3rem;
-  min-height: 50rem;
-  margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	background: rgb(240, 237, 237, 0.8);
+	width: 40rem;
+	padding: 2rem;
+	border-radius: 0.3rem;
+	min-height: 50rem;
+	margin-top: 2rem;
 }
 
 .Form-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .ProfileForm h1 {
-  margin: 0.8rem 0;
-  text-transform: uppercase;
+	margin: 0.8rem 0;
+	text-transform: uppercase;
 }
 
 .ProfileForm input[type='text'],
 input[type='url'],
 input[type='textarea'] {
-  font: inherit;
-  display: block;
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: none;
-  margin-top: 0.8rem;
-  background: rgb(240, 237, 237, 0.8);
+	font: inherit;
+	display: block;
+	width: 100%;
+	padding: 0.5rem;
+	font-size: 1rem;
+	border: none;
+	margin-top: 0.8rem;
+	background: rgb(240, 237, 237, 0.8);
 }
 
 .ProfileForm label {
-  margin-top: 0.5rem;
+	margin-top: 0.5rem;
 }
 
 .ProfileForm button {
-  font: inherit;
-  width: 10rem;
-  padding: 0.5rem;
-  margin: 0.8rem;
-  border-radius: 0.2rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  background: var(--secondary-color);
-  color: var(--light-color);
-  border: none;
-  outline: none;
+	font: inherit;
+	width: 10rem;
+	padding: 0.5rem;
+	margin: 0.8rem;
+	border-radius: 0.2rem;
+	font-size: 1.2rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	background: var(--secondary-color);
+	color: var(--light-color);
+	border: none;
+	outline: none;
 }
 .ProfileForm button:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .Form-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .Profile-FormLink {
-  font: inherit;
-  font-size: 1.2rem;
-  width: 10rem;
-  padding: 0.5rem;
-  border-radius: 0.2rem;
-  font-weight: bolder;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--primary-color);
-  border: none;
-  outline: none;
-  text-align: center;
+	font: inherit;
+	font-size: 1.2rem;
+	width: 10rem;
+	padding: 0.5rem;
+	border-radius: 0.2rem;
+	font-weight: bolder;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--primary-color);
+	border: none;
+	outline: none;
+	text-align: center;
 }
 
 .Profile-Link:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid var(--gray-color);
-  margin: 1em 0;
-  padding: 0;
-  z-index: 999;
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid var(--gray-color);
+	margin: 1em 0;
+	padding: 0;
+	z-index: 999;
 }
 
 @media (max-width: 700px) {
-  .Form {
-    width: 20rem;
-    height: 80px;
-  }
+	.Form {
+		width: 20rem;
+		height: 80px;
+	}
 }

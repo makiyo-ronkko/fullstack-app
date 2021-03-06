@@ -27,39 +27,39 @@ import './App.css';
 // }
 
 function App() {
-  // to dispatch {authUser} action, take "store" directly, use method .dispatch()
-  // when state updated, useEffect keeps running (constant loop) and stop
-  // with second bracket ... }, []); (when loaded, when mounted)
-  useEffect(() => {
-    setAuthToken(localStorage.token);
-    store.dispatch(authUser());
-  }, []);
+	// to dispatch {authUser} action, take "store" directly, use method .dispatch()
+	// when state updated, useEffect keeps running (constant loop) and stop
+	// with second bracket ... }, []); (when loaded, when mounted)
+	useEffect(() => {
+		setAuthToken(localStorage.token);
+		store.dispatch(authUser());
+	}, []);
 
-  return (
-    <Provider store={store}>
-      <Router>
-        <Navbar />
-        <Route exact path='/' component={Home} />
-        <section className='App-container'>
-          <Alert />
-          <Switch>
-            <PrivateRoute exact path='/gallery' component={PostList} />
-            <PrivateRoute exact path='/gallery/:id' component={Post} />
-            <PrivateRoute exact path='/profile' component={Profile} />
-            <PrivateRoute exact path='/profile/:id' component={ProfileView} />
-            <PrivateRoute
-              exact
-              path='/create-profile'
-              component={profileForm}
-            />
-            <Route exact path='/register' component={Signup} />
-            <Route exact path='/login' component={Signin} />
-          </Switch>
-        </section>
-        <Footer />
-      </Router>
-    </Provider>
-  );
+	return (
+		<Provider store={store}>
+			<Router>
+				<Navbar />
+				<Route exact path='/' component={Home} />
+				<section className='App-container'>
+					<Alert />
+					<Switch>
+						<PrivateRoute exact path='/gallery' component={PostList} />
+						<PrivateRoute exact path='/gallery/:id' component={Post} />
+						<PrivateRoute exact path='/profile' component={Profile} />
+						<PrivateRoute exact path='/profile/:id' component={ProfileView} />
+						<PrivateRoute
+							exact
+							path='/create-profile'
+							component={profileForm}
+						/>
+						<Route exact path='/register' component={Signup} />
+						<Route exact path='/login' component={Signin} />
+					</Switch>
+				</section>
+				<Footer />
+			</Router>
+		</Provider>
+	);
 }
 
 export default App;

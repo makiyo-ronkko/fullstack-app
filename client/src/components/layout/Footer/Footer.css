@@ -1,24 +1,24 @@
 :root {
-  --primary-color: #1c47a2;
-  --secondary-color: #a21c8a;
-  --support-color: #f1e6ab;
-  --gray-color: #bfc0c1;
-  --dark-color: #050505;
-  --light-color: #fffefd;
+	--primary-color: #1c47a2;
+	--secondary-color: #a21c8a;
+	--support-color: #f1e6ab;
+	--gray-color: #bfc0c1;
+	--dark-color: #050505;
+	--light-color: #fffefd;
 }
 
 .Footer {
-  background: var(--light-color);
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 0;
-  height: 10vh;
+	background: var(--light-color);
+	display: flex;
+	flex-direction: column;
+	margin: 1rem 0;
+	height: 10vh;
 }
 
 .copyright {
-  margin: auto;
+	margin: auto;
 }
 
 .copyright p {
-  text-align: center;
+	text-align: center;
 }

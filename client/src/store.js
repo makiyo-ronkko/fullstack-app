@@ -9,9 +9,9 @@ const initialState = {};
 const middleware = [thunk];
 
 const store = createStore(
-  rootReducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
+	rootReducer,
+	initialState,
+	composeWithDevTools(applyMiddleware(...middleware))
 );
 
 // store subscribe(listener)
@@ -20,12 +20,12 @@ const store = createStore(
 let currState = store.getState();
 
 store.subscribe(() => {
-  let preState = currState;
-  currState = store.getState();
-  if (preState.auth.token !== currState.auth.token) {
-    const token = currState.auth.token;
-    setAuthToken(token);
-  }
+	let preState = currState;
+	currState = store.getState();
+	if (preState.auth.token !== currState.auth.token) {
+		const token = currState.auth.token;
+		setAuthToken(token);
+	}
 });
 
 export default store;

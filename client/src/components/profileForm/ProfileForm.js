@@ -41,9 +41,7 @@ const ProfileForm = (props) => {
 						<h1>Your Profile</h1>
 					</div>
 
-					<label htmlFor='intro'>
-						Short introduction about yourself
-					</label>
+					<label htmlFor='intro'>Short introduction about yourself</label>
 					<input
 						type='textarea'
 						placeholder="I'm a photographer"

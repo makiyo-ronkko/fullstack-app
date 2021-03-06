@@ -82,9 +82,7 @@ const Navbar = (props) => {
 		<nav
 			className='Navbar'
 			style={
-				!props.auth.authenticated
-					? { padding: '0' }
-					: { padding: '0 2rem 0 0' }
+				!props.auth.authenticated ? { padding: '0' } : { padding: '0 2rem 0 0' }
 			}
 		>
 			<NavLink
@@ -94,18 +92,12 @@ const Navbar = (props) => {
 					fontWeight: 'bolder',
 				}}
 			>
-				<img
-					src={logo}
-					className='logo'
-					style={{ padding: '0 2rem 0 0' }}
-				/>
+				<img src={logo} className='logo' style={{ padding: '0 2rem 0 0' }} />
 			</NavLink>
 
 			{!props.auth.loading && (
 				<Fragment>
-					{props.auth.authenticated
-						? isAuthenticated
-						: notAuthenticated}
+					{props.auth.authenticated ? isAuthenticated : notAuthenticated}
 				</Fragment>
 			)}
 		</nav>
