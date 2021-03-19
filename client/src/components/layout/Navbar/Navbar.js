@@ -92,7 +92,12 @@ const Navbar = (props) => {
 					fontWeight: 'bolder',
 				}}
 			>
-				<img src={logo} className='logo' style={{ padding: '0 2rem 0 0' }} />
+				<img
+					src={logo}
+					className='logo'
+					style={{ padding: '0 2rem 0 0' }}
+					alt='logo'
+				/>
 			</NavLink>
 
 			{!props.auth.loading && (
