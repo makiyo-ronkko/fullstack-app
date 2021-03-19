@@ -1,11 +1,23 @@
-import React, { useEffect, Fragment, useState } from 'react';
+import React, { useEffect, Fragment, useState, FC } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUserProfile, deleteAccount } from '../../actions/profile';
 import './Profile.css';
+import { AutehnticatedProfile } from '../../interfaces/profile';
+import { UserInterface } from '../../interfaces/user';
+import { Auth } from '../../interfaces/auth';
+import { State } from '../../interfaces/state';
 
-const Profile = (props) => {
+interface ProfileProps {
+	profile: AutehnticatedProfile;
+	user: UserInterface;
+	auth: Auth;
+	fetchUserProfile: () => void;
+	deleteAccount: () => void;
+	loading: boolean;
+}
+
+const Profile: FC<ProfileProps> = (props): JSX.Element => {
 	// to getch profile data when as soon as page loaded
 
 	const [showDelete, setShowDelete] = useState(false);
@@ -110,14 +122,7 @@ const Profile = (props) => {
 	);
 };
 
-Profile.propTypes = {
-	fetchUserProfile: PropTypes.func.isRequired,
-	deleteAccount: PropTypes.func.isRequired,
-	auth: PropTypes.object.isRequired,
-	profile: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
 	auth: state.auth,
 	profile: state.profile,
 });

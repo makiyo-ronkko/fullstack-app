@@ -1,12 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, FC } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchProfileById } from '../../actions/profile';
 import { fetchPosts } from '../../actions/post';
-import PropTypes from 'prop-types';
 import './ProfileView.css';
+import { Auth } from '../../interfaces/auth';
+import { PostInterface } from '../../interfaces/post';
 
-const ProfileView = (props) => {
+interface ProfileViewProps {
+	profile: any;
+	auth: Auth;
+	post: any;
+	fetchProfileById: (val: string) => void;
+	fetchPosts(): () => void;
+	match: {
+		params: {
+			id: string;
+		};
+	};
+}
+
+const ProfileView: FC<ProfileViewProps> = (props): JSX.Element => {
 	const { profile } = props.profile;
 	const posts = props.post.posts;
 
@@ -49,8 +63,10 @@ const ProfileView = (props) => {
 					<div className='ProfileView-posts'>
 						{posts &&
 							posts
-								.filter((post) => post.user === profile.appuser._id)
-								.map((post) => (
+								.filter(
+									(post: PostInterface) => post.user === profile.appuser._id
+								)
+								.map((post: PostInterface) => (
 									<div key={post.id} className='ProfileView-post-container'>
 										<Link to={`/gallery/${post._id}`}>
 											<img
@@ -69,20 +85,15 @@ const ProfileView = (props) => {
 	);
 };
 
-ProfileView.propTypes = {
-	fetchProfileById: PropTypes.func.isRequired,
-	fetchPosts: PropTypes.func.isRequired,
-	profile: PropTypes.object.isRequired,
-	auth: PropTypes.object.isRequired,
-	post: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
 	profile: state.profile,
 	auth: state.auth,
 	post: state.post,
 });
 
-export default connect(mapStateToProps, { fetchProfileById, fetchPosts })(
-	ProfileView
+const connector = connect(
+	() => ({ fetchProfileById, fetchPosts }),
+	mapStateToProps
 );
+
+export default connector(ProfileView);
