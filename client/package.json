@@ -13,8 +13,10 @@
 		"@types/react-redux": "^7.1.16",
 		"@types/react-router": "^5.1.12",
 		"@types/react-router-dom": "^5.1.7",
+		"@types/uuid": "^8.3.0",
 		"axios": "^0.21.1",
 		"immer": "^8.0.1",
+		"is-svg": "^4.2.2",
 		"moment": "^2.29.0",
 		"node-notifier": "^8.0.1",
 		"object-path": "^0.11.5",
@@ -28,8 +30,10 @@
 		"redux": "^4.0.5",
 		"redux-devtools-extension": "^2.13.8",
 		"redux-thunk": "^2.3.0",
+		"ssri": "^8.0.1",
 		"typescript": "^4.2.3",
-		"uuid": "^8.3.0"
+		"uuid": "^8.3.0",
+		"y18n": "4.0.1"
 	},
 	"scripts": {
 		"start": "react-scripts start",
