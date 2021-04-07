@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './Footer.css';
 
-const Footer = () => {
+const Footer: FC = (): JSX.Element => {
 	return (
 		<div className='Footer'>
 			<div className='copyright'>

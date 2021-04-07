@@ -28,6 +28,7 @@ const ProfileView: FC<ProfileViewProps> = (props): JSX.Element => {
 		props.fetchProfileById(props.match.params.id);
 		props.fetchPosts();
 		window.scrollTo(0, 0);
+		// eslint-disable-next-line
 	}, [props.fetchProfileById, props.fetchPosts, props.match.params.id]);
 
 	return (
@@ -53,7 +54,11 @@ const ProfileView: FC<ProfileViewProps> = (props): JSX.Element => {
 						{profile.website && (
 							<p>
 								Website:{' '}
-								<a href={profile.website} target='_blank'>
+								<a
+									href={profile.website}
+									target='_blank'
+									rel='noopener noreferrer'
+								>
 									{profile.website}
 								</a>
 							</p>

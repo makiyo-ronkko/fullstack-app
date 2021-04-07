@@ -10,6 +10,7 @@ const PostList = (props) => {
 	useEffect(() => {
 		props.fetchPosts();
 		window.scrollTo(0, 0);
+		// eslint-disable-next-line
 	}, [props.fetchPosts, props.auth]);
 
 	const [formData, setFormData] = useState('');

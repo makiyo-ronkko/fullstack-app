@@ -9,6 +9,7 @@ import CommentForm from './CommentForm';
 const Post = (props) => {
 	useEffect(() => {
 		props.fetchPost(props.match.params.id);
+		// eslint-disable-next-line
 	}, [props.fetchPost]);
 
 	return props.loading || props.post === null ? (
