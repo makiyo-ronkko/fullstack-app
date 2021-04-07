@@ -24,6 +24,7 @@ const ProfileForm = (props) => {
 			});
 		}
 		window.scrollTo(0, 0);
+		// eslint-disable-next-line
 	}, [profile, loading, props.fetchUserProfile]);
 
 	const inputHandler = (e) =>

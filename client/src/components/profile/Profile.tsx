@@ -28,6 +28,7 @@ const Profile: FC<ProfileProps> = (props): JSX.Element => {
 	useEffect(() => {
 		props.fetchUserProfile();
 		window.scrollTo(0, 0);
+		// eslint-disable-next-line
 	}, [props.fetchUserProfile]);
 
 	const renderAuthenticatedUserInfo = () => {
@@ -72,7 +73,11 @@ const Profile: FC<ProfileProps> = (props): JSX.Element => {
 								<hr />
 								<p>
 									Website:{' '}
-									<a href={profile.website} target='_blank'>
+									<a
+										href={profile.website}
+										target='_blank'
+										rel='noopener noreferrer'
+									>
 										{profile.website}
 									</a>
 								</p>
