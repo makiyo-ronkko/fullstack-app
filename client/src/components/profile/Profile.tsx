@@ -20,7 +20,7 @@ interface ProfileProps {
 const Profile: FC<ProfileProps> = (props): JSX.Element => {
 	// to getch profile data when as soon as page loaded
 
-	const [showDelete, setShowDelete] = useState(false);
+	const [showDelete, setShowDelete] = useState<boolean>(false);
 
 	const { profile } = props.profile;
 	const { user } = props.auth;
@@ -46,12 +46,12 @@ const Profile: FC<ProfileProps> = (props): JSX.Element => {
 	};
 
 	// display modal to double check account deletion
-	const deleteConfirmation = () => {
+	const deleteConfirmation = (): void => {
 		setShowDelete(!showDelete);
 	};
 
 	// confirm account deletion
-	const confirmDelete = () => {
+	const confirmDelete = (): void => {
 		props.deleteAccount();
 	};
 

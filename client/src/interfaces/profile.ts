@@ -4,6 +4,17 @@ export interface ProfileInterface {
 	website: string;
 	location: string;
 	date: Date;
+	profile?: {
+		appuser: {
+			avatar: string;
+			name: string;
+			_id: 'string';
+		};
+		_id: string;
+		intro?: string;
+		location?: string;
+		website?: string;
+	};
 }
 
 export interface AutehnticatedProfile {

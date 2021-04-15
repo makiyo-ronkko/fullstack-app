@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, FC } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
-const Home = (props) => {
+const Home: FC = (): JSX.Element => {
 	useEffect(() => {
 		window.scrollTo(0, 0);
-	}, [props.loading]);
+	}, []);
 
 	return (
 		<div className='Home'>

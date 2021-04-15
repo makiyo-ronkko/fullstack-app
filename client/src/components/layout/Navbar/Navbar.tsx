@@ -1,30 +1,36 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, FC, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../../actions/index';
 import { alert } from '../../../actions/alert';
-import PropTypes from 'prop-types';
 import './Navbar.css';
 import logo from '../../../img/logo.png';
+import { Auth } from '../../../interfaces/auth';
+import { State } from '../../../interfaces/state';
 
-const Navbar = (props) => {
+interface NavbarProps {
+	logout: () => void;
+	alert: (val: string, val2: string) => void;
+	auth: Auth;
+}
+
+const Navbar: FC<NavbarProps> = ({ logout, alert, auth }): JSX.Element => {
 	// passing logout props, auth
+	const [toggle, setToggle] = useState<boolean>(false);
 
-	const [toggle, setToggle] = useState(false);
-
-	const openToggle = () => {
+	const openToggle = (): void => {
 		setToggle(!toggle);
 		setTimeout(() => {
 			setToggle(toggle);
 		}, 5000);
 	};
 
-	const logoutHandler = () => {
-		props.logout();
-		props.alert('You have logged out', 'blue');
+	const logoutHandler = (): void => {
+		logout();
+		alert('You have logged out', 'blue');
 	};
 
-	const isAuthenticated = (
+	const isAuthenticated: ReactElement = (
 		<Fragment>
 			<ul>
 				<li>
@@ -34,10 +40,10 @@ const Navbar = (props) => {
 				</li>
 				<li className='Navbar-bars'>
 					<div className='burger'>
-						{props.auth.user && (
+						{auth.user && (
 							<img
-								src={props.auth.user.avatar}
-								alt={props.auth.user.name}
+								src={auth.user.avatar}
+								alt={auth.user.name}
 								className='Navbar-bars-profile-avatar'
 								onClick={openToggle}
 								style={{ marginBottom: '0.6rem', padding: '0' }}
@@ -63,7 +69,7 @@ const Navbar = (props) => {
 		</Fragment>
 	);
 
-	const notAuthenticated = (
+	const notAuthenticated: ReactElement = (
 		<ul>
 			<li>
 				<NavLink exact to='/register'>
@@ -81,9 +87,7 @@ const Navbar = (props) => {
 	return (
 		<nav
 			className='Navbar'
-			style={
-				!props.auth.authenticated ? { padding: '0' } : { padding: '0 2rem 0 0' }
-			}
+			style={!auth.authenticated ? { padding: '0' } : { padding: '0 2rem 0 0' }}
 		>
 			<NavLink
 				exact
@@ -100,22 +104,16 @@ const Navbar = (props) => {
 				/>
 			</NavLink>
 
-			{!props.auth.loading && (
+			{!auth.loading && (
 				<Fragment>
-					{props.auth.authenticated ? isAuthenticated : notAuthenticated}
+					{auth.authenticated ? isAuthenticated : notAuthenticated}
 				</Fragment>
 			)}
 		</nav>
 	);
 };
 
-Navbar.prooTypes = {
-	logout: PropTypes.func.isRequired,
-	auth: PropTypes.object.isRequired,
-	alert: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
 	auth: state.auth,
 });
 
