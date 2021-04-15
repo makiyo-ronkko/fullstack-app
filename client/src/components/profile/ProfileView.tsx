@@ -5,14 +5,15 @@ import { fetchProfileById } from '../../actions/profile';
 import { fetchPosts } from '../../actions/post';
 import './ProfileView.css';
 import { Auth } from '../../interfaces/auth';
+import { ProfileInterface } from '../../interfaces/profile';
 import { PostInterface } from '../../interfaces/post';
 
 interface ProfileViewProps {
-	profile: any;
+	profile: ProfileInterface;
 	auth: Auth;
 	post: any;
 	fetchProfileById: (val: string) => void;
-	fetchPosts(): () => void;
+	fetchPosts: () => void;
 	match: {
 		params: {
 			id: string;
@@ -20,16 +21,23 @@ interface ProfileViewProps {
 	};
 }
 
-const ProfileView: FC<ProfileViewProps> = (props): JSX.Element => {
-	const { profile } = props.profile;
-	const posts = props.post.posts;
+const ProfileView: FC<ProfileViewProps> = ({
+	auth,
+	fetchProfileById,
+	fetchPosts,
+	match,
+	profile: { profile },
+	post,
+}): JSX.Element => {
+	// const { profile } = profile;
+	const posts = post.posts;
 
 	useEffect(() => {
-		props.fetchProfileById(props.match.params.id);
-		props.fetchPosts();
+		fetchProfileById(match.params.id);
+		fetchPosts();
 		window.scrollTo(0, 0);
 		// eslint-disable-next-line
-	}, [props.fetchProfileById, props.fetchPosts, props.match.params.id]);
+	}, [fetchProfileById, fetchPosts, match.params.id]);
 
 	return (
 		<div className='container'>
@@ -42,16 +50,18 @@ const ProfileView: FC<ProfileViewProps> = (props): JSX.Element => {
 					</div>
 					<h1>Profile</h1>
 					<div>
-						{profile.appuser.avatar && (
+						{profile?.appuser.avatar && (
 							<img src={profile.appuser.avatar} alt={profile.appuser.name} />
 						)}
-						{profile.appuser.name && <p>Name: {profile.appuser.name}</p>}
+						{profile?.appuser.name && (
+							<p>Name: {profile && profile.appuser.name}</p>
+						)}
 						<hr />
-						{profile.intro && <p>Bio: {profile.intro}</p>}
+						{profile?.intro && <p>Bio: {profile.intro}</p>}
 						<hr />
-						{profile.location && <p>Location: {profile.location}</p>}
+						{profile?.location && <p>Location: {profile.location}</p>}
 						<hr />
-						{profile.website && (
+						{profile?.website && (
 							<p>
 								Website:{' '}
 								<a
@@ -69,7 +79,7 @@ const ProfileView: FC<ProfileViewProps> = (props): JSX.Element => {
 						{posts &&
 							posts
 								.filter(
-									(post: PostInterface) => post.user === profile.appuser._id
+									(post: PostInterface) => post.user === profile?.appuser._id
 								)
 								.map((post: PostInterface) => (
 									<div key={post.id} className='ProfileView-post-container'>
@@ -96,9 +106,7 @@ const mapStateToProps = (state: any) => ({
 	post: state.post,
 });
 
-const connector = connect(
-	() => ({ fetchProfileById, fetchPosts }),
-	mapStateToProps
-);
-
-export default connector(ProfileView);
+export default connect(mapStateToProps, {
+	fetchProfileById,
+	fetchPosts,
+})(ProfileView);
