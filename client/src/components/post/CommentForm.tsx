@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, FC } from 'react';
 import { connect } from 'react-redux';
 import { addComment } from '../../actions/post';
 import './CommentForm.css';
 
-const CommentForm = (props) => {
+interface CommentFormProps {
+	addComment: (val1: string, val2: any) => void;
+	postId: string;
+}
+
+const CommentForm: FC<CommentFormProps> = ({
+	addComment,
+	postId,
+}): JSX.Element => {
 	const [text, setText] = useState('');
 
-	const inputHandler = (e) => {
+	const inputHandler = (e: any) => {
 		setText(e.target.value);
 	};
 
-	const submitHandler = (e) => {
+	const submitHandler = (e: any) => {
 		e.preventDefault();
-		props.addComment(props.postId, { text });
+		addComment(postId, { text });
 		setText('');
 	};
 
@@ -37,10 +44,6 @@ const CommentForm = (props) => {
 			</form>
 		</div>
 	);
-};
-
-CommentForm.propTypes = {
-	addComment: PropTypes.func.isRequired,
 };
 
 export default connect(null, { addComment })(CommentForm);
