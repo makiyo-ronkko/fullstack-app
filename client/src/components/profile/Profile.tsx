@@ -17,28 +17,35 @@ interface ProfileProps {
 	loading: boolean;
 }
 
-const Profile: FC<ProfileProps> = (props): JSX.Element => {
+const Profile: FC<ProfileProps> = ({
+	profile,
+	user,
+	auth,
+	fetchUserProfile,
+	deleteAccount,
+	loading,
+}): JSX.Element => {
 	// to getch profile data when as soon as page loaded
 
 	const [showDelete, setShowDelete] = useState<boolean>(false);
 
-	const { profile } = props.profile;
-	const { user } = props.auth;
+	// const { profile } = props.profile;
+	// const { user } = props.auth;
 
 	useEffect(() => {
-		props.fetchUserProfile();
+		fetchUserProfile();
 		window.scrollTo(0, 0);
 		// eslint-disable-next-line
-	}, [props.fetchUserProfile]);
+	}, [fetchUserProfile]);
 
 	const renderAuthenticatedUserInfo = () => {
 		if (user !== null) {
 			return (
 				<>
-					<img src={user.avatar} alt={user.name} />
-					<p>Name: {user.name}</p>
+					<img src={auth.user.avatar} alt={auth.user.name} />
+					<p>Name: {auth.user.name}</p>
 					<hr />
-					<p>Email: {user.email}</p>
+					<p>Email: {auth.user.email}</p>
 					<hr />
 				</>
 			);
@@ -52,10 +59,10 @@ const Profile: FC<ProfileProps> = (props): JSX.Element => {
 
 	// confirm account deletion
 	const confirmDelete = (): void => {
-		props.deleteAccount();
+		deleteAccount();
 	};
 
-	return props.loading && props.profile === null ? (
+	return loading && profile === null ? (
 		<Fragment>Loading... </Fragment>
 	) : (
 		<Fragment>
@@ -67,18 +74,18 @@ const Profile: FC<ProfileProps> = (props): JSX.Element => {
 						<Fragment>
 							<h1>Profile</h1>
 							<div>
-								<p>Bio: {profile.intro}</p>
+								<p>Bio: {profile.profile.intro}</p>
 								<hr />
-								<p>Location: {profile.location}</p>
+								<p>Location: {profile.profile.location}</p>
 								<hr />
 								<p>
 									Website:{' '}
 									<a
-										href={profile.website}
+										href={profile.profile.website}
 										target='_blank'
 										rel='noopener noreferrer'
 									>
-										{profile.website}
+										{profile.profile.website}
 									</a>
 								</p>
 								<hr />
