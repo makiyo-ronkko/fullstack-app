@@ -4,4 +4,6 @@ export interface UserInterface {
 	password: string;
 	avatar: string;
 	date: Date;
+	__v?: number;
+	_id?: string;
 }
